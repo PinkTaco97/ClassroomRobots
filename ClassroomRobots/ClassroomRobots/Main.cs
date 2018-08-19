@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace ClassroomRobots
 {
+    //The main form class
     public partial class Main : Form
     {
+        //Constructor
         public Main()
         {
             InitializeComponent();
+        }
+
+        //Called When the Exit button is clicked
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
