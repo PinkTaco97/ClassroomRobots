@@ -79,5 +79,22 @@ namespace ClassroomRobots
             //Show the Dialog
             saveFileDialog.ShowDialog();
         }
+
+        /// <summary>
+        /// Called when the New->Classroom button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewClassroom_Btn_Click(object sender, EventArgs e)
+        {
+            //Create a New Classrom form.
+            NewClassroom newClassroom = new NewClassroom(this);
+
+            //Show the new form.
+            newClassroom.Show();
+
+            //Hide the main form.
+            this.Hide();
+        }
     }
 }
