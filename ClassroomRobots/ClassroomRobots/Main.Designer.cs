@@ -44,15 +44,32 @@
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.RoomNumber_Input = new System.Windows.Forms.TextBox();
+            this.ClassName_Input = new System.Windows.Forms.TextBox();
+            this.Teacher_Input = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.Teacher_Input);
+            this.panel1.Controls.Add(this.ClassName_Input);
+            this.panel1.Controls.Add(this.RoomNumber_Input);
             this.panel1.Location = new System.Drawing.Point(-1, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(990, 50);
+            this.panel1.Size = new System.Drawing.Size(990, 75);
             this.panel1.TabIndex = 0;
             // 
             // toolStrip1
@@ -97,14 +114,14 @@
             // NewClassroom_Btn
             // 
             this.NewClassroom_Btn.Name = "NewClassroom_Btn";
-            this.NewClassroom_Btn.Size = new System.Drawing.Size(152, 22);
+            this.NewClassroom_Btn.Size = new System.Drawing.Size(130, 22);
             this.NewClassroom_Btn.Text = "Classroom";
             this.NewClassroom_Btn.Click += new System.EventHandler(this.NewClassroom_Btn_Click);
             // 
             // studentToolStripMenuItem
             // 
             this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-            this.studentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.studentToolStripMenuItem.Text = "Student";
             // 
             // Open
@@ -121,6 +138,7 @@
             // 
             // Save
             // 
+            this.Save.Enabled = false;
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(152, 22);
             this.Save.Text = "Save";
@@ -128,6 +146,7 @@
             // 
             // SaveAs
             // 
+            this.SaveAs.Enabled = false;
             this.SaveAs.Name = "SaveAs";
             this.SaveAs.Size = new System.Drawing.Size(152, 22);
             this.SaveAs.Text = "Save As";
@@ -159,7 +178,7 @@
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.studentsToolStripMenuItem.Text = "Students";
             // 
             // toolStripButton1
@@ -173,17 +192,103 @@
             this.toolStripButton1.Text = "Help";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
+            // RoomNumber_Input
+            // 
+            this.RoomNumber_Input.Enabled = false;
+            this.RoomNumber_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomNumber_Input.Location = new System.Drawing.Point(673, 38);
+            this.RoomNumber_Input.Name = "RoomNumber_Input";
+            this.RoomNumber_Input.Size = new System.Drawing.Size(300, 30);
+            this.RoomNumber_Input.TabIndex = 2;
+            this.RoomNumber_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ClassName_Input
+            // 
+            this.ClassName_Input.Enabled = false;
+            this.ClassName_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClassName_Input.Location = new System.Drawing.Point(344, 38);
+            this.ClassName_Input.Name = "ClassName_Input";
+            this.ClassName_Input.Size = new System.Drawing.Size(300, 30);
+            this.ClassName_Input.TabIndex = 3;
+            this.ClassName_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Teacher_Input
+            // 
+            this.Teacher_Input.Enabled = false;
+            this.Teacher_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Teacher_Input.Location = new System.Drawing.Point(13, 38);
+            this.Teacher_Input.Name = "Teacher_Input";
+            this.Teacher_Input.Size = new System.Drawing.Size(300, 30);
+            this.Teacher_Input.TabIndex = 4;
+            this.Teacher_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(13, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 25);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Teacher:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(339, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 25);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Class:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(668, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 25);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Room:";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.GrayText;
+            this.panel2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(329, 614);
+            this.panel2.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(326, 100);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(658, 611);
+            this.dataGridView1.TabIndex = 3;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 712);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel2);
             this.Name = "Main";
             this.Text = "Classroom Robots";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,6 +311,14 @@
         private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
         private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Teacher_Input;
+        private System.Windows.Forms.TextBox ClassName_Input;
+        private System.Windows.Forms.TextBox RoomNumber_Input;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

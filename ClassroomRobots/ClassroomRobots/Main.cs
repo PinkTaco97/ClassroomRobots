@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ClassroomRobots
 {
@@ -57,9 +58,81 @@ namespace ClassroomRobots
             //Set the filter
             openFileDialog.Filter = "CSV File (*.csv)|*.csv";
 
+            //If the user has selected a file to open.
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //string ext = Path.GetExtension(OpenFileDialog1.FileName);
+                //Get the path of the file.
+                string path = openFileDialog.FileName;
+
+                //The teachers Name.
+                string teacher = "";
+
+                //The Class Name.
+                string className = "";
+
+                //The Room Number.
+                string roomNumber = "";
+
+                //The List of students in the class.
+                List<Student> students = new List<Student>();
+
+                //Read the file.
+                using (var reader = new StreamReader(@path))
+                {
+                    //While there are still lines in the file.
+                    while (!reader.EndOfStream)
+                    {
+                        //Read the current line.
+                        var line = reader.ReadLine();
+
+                        //Split the line into the seperate values.
+                        var values = line.Split(',');
+
+                        //If this line is the Teacher.
+                        if (values[0] == "%TEACHER%")
+                        {
+                            //Set the teachers name
+                            teacher = values[1];
+                        }
+                        //If this line is the Class.
+                        else if (values[0] == "%CLASS%")
+                        {
+                            //Set the class name
+                            className = values[1];
+                        }
+                        //If this line is the Room Number.
+                        else if (values[0] == "%ROOM%")
+                        {
+                            //Set the room number
+                            roomNumber = values[1];
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Name: " + values[0] + "\n X: " + values[1] + "\n Y: " + values[2]);
+                            //Add a new Student.
+                            students.Add(new Student(values[0], Int32.Parse(values[1]), Int32.Parse(values[2])));
+                        }
+                    }
+                }
+
+                //After we read the file.
+                //Check to see if we have all the requirments.
+
+                if (string.IsNullOrEmpty(teacher) || string.IsNullOrEmpty(className) || string.IsNullOrEmpty(roomNumber))
+                {
+                    MessageBox.Show("Please input a classroom save file.");
+                    MessageBox.Show("Teacher: " + teacher + "\n Class: " + className + "\n Room: " + roomNumber);
+                }
+                else
+                {
+                    //Create a new Classroom
+                    Classroom classroom = new Classroom(teacher, className, roomNumber);
+                    classroom.students = students;
+
+                    //Load The new Classroom into the application
+                    LoadClassroom(classroom);
+                }
             }
         }
 
@@ -95,6 +168,33 @@ namespace ClassroomRobots
 
             //Hide the main form.
             this.Hide();
+        }
+
+        /// <summary>
+        /// Load the classroom.
+        /// </summary>
+        /// <param name="classroom"></param>
+        private void LoadClassroom(Classroom classroom)
+        {
+            //Set the Techers Name text.
+            Teacher_Input.Text = classroom.teacher;
+            Teacher_Input.Enabled = true;
+
+            //Set the Class Name's text.
+            ClassName_Input.Text = classroom.className;
+            ClassName_Input.Enabled = true;
+
+            //Set the Room Number's text.
+            RoomNumber_Input.Text = classroom.roomNumber;
+            RoomNumber_Input.Enabled = true;
+        }
+
+        /// <summary>
+        /// Load the Students into the DataGrid.
+        /// </summary>
+        private void LoadStudents()
+        {
+
         }
     }
 }
