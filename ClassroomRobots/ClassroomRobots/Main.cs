@@ -16,12 +16,24 @@ namespace ClassroomRobots
     /// </summary>
     public partial class Main : Form
     {
+        //The path of the file.
+        public string path = "";
+
+        /// <summary>
+        /// The datatable.
+        /// </summary>
+        DataTable dataTable = new DataTable();
+
         /// <summary>
         /// Constructor.
         /// </summary>
         public Main()
         {
+            //Initialize the Form.
             InitializeComponent();
+
+            //Create the DataTable
+            CreateTable();
         }
 
         /// <summary>
@@ -62,7 +74,7 @@ namespace ClassroomRobots
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //Get the path of the file.
-                string path = openFileDialog.FileName;
+                path = openFileDialog.FileName;
 
                 //The teachers Name.
                 string teacher = "";
@@ -106,33 +118,26 @@ namespace ClassroomRobots
                             //Set the room number
                             roomNumber = values[1];
                         }
-                        else
+                        else if (!string.IsNullOrEmpty(teacher) && !string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(roomNumber))
                         {
-
-                            MessageBox.Show("Name: " + values[0] + "\n X: " + values[1] + "\n Y: " + values[2]);
                             //Add a new Student.
                             students.Add(new Student(values[0], Int32.Parse(values[1]), Int32.Parse(values[2])));
                         }
+                        else
+                        {
+                            //message user.
+                            MessageBox.Show("Please input a classroom save file.");
+                            return;
+                        }
                     }
                 }
+                
+                //Create a new Classroom
+                Classroom classroom = new Classroom(teacher, className, roomNumber);
+                classroom.students = students;
 
-                //After we read the file.
-                //Check to see if we have all the requirments.
-
-                if (string.IsNullOrEmpty(teacher) || string.IsNullOrEmpty(className) || string.IsNullOrEmpty(roomNumber))
-                {
-                    MessageBox.Show("Please input a classroom save file.");
-                    MessageBox.Show("Teacher: " + teacher + "\n Class: " + className + "\n Room: " + roomNumber);
-                }
-                else
-                {
-                    //Create a new Classroom
-                    Classroom classroom = new Classroom(teacher, className, roomNumber);
-                    classroom.students = students;
-
-                    //Load The new Classroom into the application
-                    LoadClassroom(classroom);
-                }
+                //Load The new Classroom into the application
+                LoadClassroom(classroom);
             }
         }
 
@@ -187,6 +192,30 @@ namespace ClassroomRobots
             //Set the Room Number's text.
             RoomNumber_Input.Text = classroom.roomNumber;
             RoomNumber_Input.Enabled = true;
+        }
+
+        /// <summary>
+        /// Create the Datatable.
+        /// </summary>
+        private void CreateTable()
+        {
+            //Add the columns.
+            dataTable.Columns.Add("1");
+            dataTable.Columns.Add("2");
+            dataTable.Columns.Add("3");
+            dataTable.Columns.Add("4");
+            dataTable.Columns.Add("5");
+            dataTable.Columns.Add("6");
+            dataTable.Columns.Add("7");
+            dataTable.Columns.Add("8");
+            dataTable.Columns.Add("9");
+            dataTable.Columns.Add("10");
+
+            //Set the datagrids datasource.
+            data.DataSource = dataTable;
+
+            //Load the friends into the table.
+            //LoadTable();
         }
 
         /// <summary>
