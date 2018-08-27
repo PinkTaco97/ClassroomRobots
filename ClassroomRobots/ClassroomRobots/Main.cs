@@ -25,15 +25,17 @@ namespace ClassroomRobots
         DataTable dataTable = new DataTable();
 
         /// <summary>
+        /// The classroom.
+        /// </summary>
+        Classroom classroom;
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         public Main()
         {
             //Initialize the Form.
             InitializeComponent();
-
-            //Create the DataTable
-            CreateTable();
         }
 
         /// <summary>
@@ -85,6 +87,9 @@ namespace ClassroomRobots
                 //The Room Number.
                 string roomNumber = "";
 
+                //The Size of the classroom.
+                int size = 0;
+
                 //The List of students in the class.
                 List<Student> students = new List<Student>();
 
@@ -118,7 +123,13 @@ namespace ClassroomRobots
                             //Set the room number
                             roomNumber = values[1];
                         }
-                        else if (!string.IsNullOrEmpty(teacher) && !string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(roomNumber))
+                        //If this line is th Room Size.
+                        else if (values[0] == "%SIZE%")
+                        {
+                            //Set the room size
+                            size = Int32.Parse(values[1]);
+                        }
+                        else if (!string.IsNullOrEmpty(teacher) && !string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(roomNumber) && size != 0)
                         {
                             //Add a new Student.
                             students.Add(new Student(values[0], Int32.Parse(values[1]), Int32.Parse(values[2])));
@@ -133,7 +144,7 @@ namespace ClassroomRobots
                 }
                 
                 //Create a new Classroom
-                Classroom classroom = new Classroom(teacher, className, roomNumber);
+                classroom = new Classroom(teacher, className, roomNumber, size);
                 classroom.students = students;
 
                 //Load The new Classroom into the application
@@ -192,27 +203,42 @@ namespace ClassroomRobots
             //Set the Room Number's text.
             RoomNumber_Input.Text = classroom.roomNumber;
             RoomNumber_Input.Enabled = true;
+
+            //Create the DataTable
+            CreateTable(classroom.size);
         }
 
         /// <summary>
-        /// Create the Datatable.
+        /// Create the Table.
         /// </summary>
-        private void CreateTable()
+        private void CreateTable(int size)
         {
-            //Add the columns.
-            dataTable.Columns.Add("1");
-            dataTable.Columns.Add("2");
-            dataTable.Columns.Add("3");
-            dataTable.Columns.Add("4");
-            dataTable.Columns.Add("5");
-            dataTable.Columns.Add("6");
-            dataTable.Columns.Add("7");
-            dataTable.Columns.Add("8");
-            dataTable.Columns.Add("9");
-            dataTable.Columns.Add("10");
+            //Add the columns and rows.
+            for (int i = 0; i < size; i++)
+            {
+                //Add the column.
+                dataTable.Columns.Add(i.ToString());
+
+                //Create a row.
+                DataRow row = dataTable.NewRow();
+
+                //Add the row to the datatable.
+                dataTable.Rows.Add(row);
+            }
 
             //Set the datagrids datasource.
             data.DataSource = dataTable;
+
+            //Add the row Headers.
+            for (int i = 0; i < classroom.size; i++)
+            {
+                data.Rows[i].HeaderCell.Value = i.ToString();
+            }
+
+            foreach (DataGridViewColumn column in data.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             //Load the friends into the table.
             //LoadTable();
@@ -224,6 +250,36 @@ namespace ClassroomRobots
         private void LoadStudents()
         {
 
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+        // Keyboard Shortcuts
+        private void Main_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            //Ctrl + O
+            if (e.KeyCode == Keys.O && e.Modifiers == Keys.Control)
+            {
+                //Show the Open Dialog.
+                Open_Click(sender, e);
+            }
+            //Ctrl + S
+            else if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                //Show the Save Dialog.
+                Save_Click(sender, e);
+            }
+            //Ctrl + Shift + S
+            else if (e.KeyCode == Keys.S && e.Modifiers == (Keys.Control | Keys.Shift))
+            {
+                //Show the Save Dialog.
+                SaveAs_Click(sender, e);
+            }
         }
     }
 }

@@ -23,13 +23,16 @@ namespace ClassroomRobots
         //The layout of the classroom.
         public List<List<Cell>> layout;
 
+        //The size of the classrooom
+        public int size = 5;
+
         /// <summary>
         /// New Classroom.
         /// </summary>
         /// <param name="teacher"></param>
         /// <param name="className"></param>
         /// <param name="roomNumber"></param>
-        public Classroom(string teacher, string className, string roomNumber)
+        public Classroom(string teacher, string className, string roomNumber, int size)
         {
             //Set the Teachers Name.
             this.teacher = teacher;
@@ -39,6 +42,9 @@ namespace ClassroomRobots
 
             //Set the Room Number.
             this.roomNumber = roomNumber;
+
+            //Set the Room Size.
+            this.size = size;
 
             //Setup the list of students.
             this.students = new List<Student>();
