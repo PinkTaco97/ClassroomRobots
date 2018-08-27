@@ -238,6 +238,7 @@ namespace ClassroomRobots
             foreach (DataGridViewColumn column in data.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                column.MinimumWidth = 100;
             }
 
             //Load the friends into the table.

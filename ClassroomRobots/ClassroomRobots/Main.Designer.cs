@@ -69,10 +69,10 @@
             this.panel1.Controls.Add(this.Teacher_Input);
             this.panel1.Controls.Add(this.ClassName_Input);
             this.panel1.Controls.Add(this.RoomNumber_Input);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(984, 75);
+            this.panel1.Size = new System.Drawing.Size(334, 687);
             this.panel1.TabIndex = 0;
             // 
             // label3
@@ -80,7 +80,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(668, 10);
+            this.label3.Location = new System.Drawing.Point(6, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 7;
@@ -91,7 +91,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(339, 10);
+            this.label2.Location = new System.Drawing.Point(8, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 25);
             this.label2.TabIndex = 6;
@@ -123,7 +123,7 @@
             // 
             this.ClassName_Input.Enabled = false;
             this.ClassName_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClassName_Input.Location = new System.Drawing.Point(344, 38);
+            this.ClassName_Input.Location = new System.Drawing.Point(13, 102);
             this.ClassName_Input.Name = "ClassName_Input";
             this.ClassName_Input.Size = new System.Drawing.Size(300, 30);
             this.ClassName_Input.TabIndex = 3;
@@ -133,7 +133,7 @@
             // 
             this.RoomNumber_Input.Enabled = false;
             this.RoomNumber_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomNumber_Input.Location = new System.Drawing.Point(673, 38);
+            this.RoomNumber_Input.Location = new System.Drawing.Point(11, 165);
             this.RoomNumber_Input.Name = "RoomNumber_Input";
             this.RoomNumber_Input.Size = new System.Drawing.Size(300, 30);
             this.RoomNumber_Input.TabIndex = 2;
@@ -265,7 +265,7 @@
             this.data.AllowUserToResizeColumns = false;
             this.data.AllowUserToResizeRows = false;
             this.data.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.data.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.data.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.data.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -279,7 +279,8 @@
             this.data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.data.Cursor = System.Windows.Forms.Cursors.Default;
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.data.Location = new System.Drawing.Point(0, 100);
+            this.data.Location = new System.Drawing.Point(334, 25);
+            this.data.MinimumSize = new System.Drawing.Size(650, 0);
             this.data.MultiSelect = false;
             this.data.Name = "data";
             this.data.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -299,7 +300,7 @@
             this.data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.data.ShowEditingIcon = false;
             this.data.ShowRowErrors = false;
-            this.data.Size = new System.Drawing.Size(984, 612);
+            this.data.Size = new System.Drawing.Size(650, 687);
             this.data.TabIndex = 3;
             this.data.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             // 
