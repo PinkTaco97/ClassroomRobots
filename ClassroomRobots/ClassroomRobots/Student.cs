@@ -9,7 +9,7 @@ namespace ClassroomRobots
     /// <summary>
     /// The Student class.
     /// </summary>
-    class Student
+    public class Student
     {
         //The students name.
         public string name;

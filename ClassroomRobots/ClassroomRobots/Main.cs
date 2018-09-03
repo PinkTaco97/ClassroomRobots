@@ -20,14 +20,19 @@ namespace ClassroomRobots
         public string path = "";
 
         /// <summary>
-        /// The datatable.
+        /// The Classroom Table.
         /// </summary>
-        DataTable dataTable = new DataTable();
+        public DataTable classroomTable;
+
+        /// <summary>
+        /// The Student Table.
+        /// </summary>
+        public DataTable studentTable;
 
         /// <summary>
         /// The classroom.
         /// </summary>
-        Classroom classroom;
+        public Classroom classroom = null;
 
         /// <summary>
         /// Constructor.
@@ -45,8 +50,31 @@ namespace ClassroomRobots
         /// <param name="e"></param>
         private void Exit_Click(object sender, EventArgs e)
         {
-            //Close the form
-            this.Close();
+            //If a classroom hasnt already been loaded.
+            if (classroom == null)
+            {
+                //Close the form
+                this.Close();
+            }
+            //There is a classroom object.
+            else
+            {
+                //Whether the user wants to save the current classroom before making a new one.
+                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+                //If the result was yes.
+                if (result == DialogResult.Yes)
+                {
+                    //Save the file.
+                    SaveAs_Click(sender, e);
+                }
+                else if (result == DialogResult.No)
+                {
+                    //Close the form
+                    this.Close();
+                }
+            }
+            
         }
 
         /// <summary>
@@ -65,6 +93,210 @@ namespace ClassroomRobots
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Open_Click(object sender, EventArgs e)
+        {
+            //If a classroom hasnt already been loaded.
+            if(classroom == null)
+            {
+                //Open the classroom.
+                OpenClassroom();
+            }
+            //There is a classroom object.
+            else
+            {
+                //Whether the user wants to save the current classroom before making a new one.
+                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+                //If the result was yes.
+                if (result == DialogResult.Yes)
+                {
+                    //Save the file.
+                    SaveAs_Click(sender, e);
+                }
+                else if (result == DialogResult.No)
+                {
+                    //Set the classroom to null.
+                    classroom = null;
+
+                    //Recall the function
+                    Open_Click(sender, e);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when the Save As button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveAs_Click(object sender, EventArgs e)
+        {
+            //Create a Save Dialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            //Set the Filter
+            saveFileDialog.Filter = "CSV File (*.csv)|*.csv";
+
+            //Show the Dialog
+            saveFileDialog.ShowDialog();
+        }
+
+        /// <summary>
+        /// Called when the New->Classroom button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewClassroom_Btn_Click(object sender, EventArgs e)
+        {
+            //If a classroom hasnt already been loaded.
+            if (classroom == null)
+            {
+                //Create a New Classrom form.
+                NewClassroom newClassroom = new NewClassroom(this);
+
+                //Show the new form.
+                newClassroom.Show();
+
+                //Hide the main form.
+                this.Hide();
+            }
+            //There is a classroom object.
+            else
+            {
+                //Whether the user wants to save the current classroom before making a new one.
+                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+                //If the result was yes.
+                if (result == DialogResult.Yes)
+                {
+                    //Save the file.
+                    SaveAs_Click(sender, e);
+                }
+                else if (result == DialogResult.No)
+                {
+                    //Create a New Classrom form.
+                    NewClassroom newClassroom = new NewClassroom(this);
+
+                    //Show the new form.
+                    newClassroom.Show();
+
+                    //Hide the main form.
+                    this.Hide();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Load the classroom.
+        /// </summary>
+        /// <param name="classroom"></param>
+        public void LoadClassroom(Classroom classroom)
+        {
+            //Set the Techers Name text.
+            Input_Teacher.Text = classroom.teacher;
+            Input_Teacher.Enabled = true;
+
+            //Set the Class Name's text.
+            Input_ClassName.Text = classroom.className;
+            Input_ClassName.Enabled = true;
+
+            //Set the Room Number's text.
+            Input_RoomNumber.Text = classroom.roomNumber;
+            Input_RoomNumber.Enabled = true;
+
+            //Set the Room Size.
+            Input_Size.Value = classroom.size;
+            Input_Size.Enabled = true;
+
+            //Create the DataTable
+            CreateTable(classroom.size);
+        }
+
+        /// <summary>
+        /// Create the Table.
+        /// </summary>
+        private void CreateTable(int size)
+        {
+            //Create the ClassroomTable.
+            classroomTable = new DataTable();
+
+            //Add the columns and rows.
+            for (int i = 0; i < size; i++)
+            {
+                //Add the column.
+                classroomTable.Columns.Add(i.ToString());
+
+                //Create a row.
+                DataRow row = classroomTable.NewRow();
+
+                //Add the row to the datatable.
+                classroomTable.Rows.Add(row);
+            }
+
+            //Set the datagrids datasource.
+            ClassroomData.DataSource = classroomTable;
+
+            //Add the row Headers.
+            for (int i = 0; i < classroom.size; i++)
+            {
+                ClassroomData.Rows[i].HeaderCell.Value = i.ToString();
+            }
+
+            foreach (DataGridViewColumn column in ClassroomData.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                column.MinimumWidth = 100;
+            }
+
+            //Load the friends into the table.
+            //LoadTable();
+        }
+
+        /// <summary>
+        /// Load the Students into the DataGrid.
+        /// </summary>
+        private void LoadStudents()
+        {
+
+        }
+
+        // Keyboard Shortcuts
+        private void Main_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            //Ctrl + O
+            if (e.KeyCode == Keys.O && e.Modifiers == Keys.Control)
+            {
+                //Show the Open Dialog.
+                Open_Click(sender, e);
+            }
+            //Ctrl + S
+            else if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                //Show the Save Dialog.
+                Save_Click(sender, e);
+            }
+            //Ctrl + Shift + S
+            else if (e.KeyCode == Keys.S && e.Modifiers == (Keys.Control | Keys.Shift))
+            {
+                //Show the Save Dialog.
+                SaveAs_Click(sender, e);
+            }
+        }
+
+        //Called when the student button is clicked.
+        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Create a New Classrom form.
+            NewStudent newStudent = new NewStudent(this);
+
+            //Show the new form.
+            newStudent.Show();
+
+            //Hide the main form.
+            this.Hide();
+        }
+
+        //Opens a classrom file.
+        private void OpenClassroom()
         {
             //Create an Open Dialog
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -142,144 +374,13 @@ namespace ClassroomRobots
                         }
                     }
                 }
-                
+
                 //Create a new Classroom
                 classroom = new Classroom(teacher, className, roomNumber, size);
                 classroom.students = students;
 
                 //Load The new Classroom into the application
                 LoadClassroom(classroom);
-            }
-        }
-
-        /// <summary>
-        /// Called when the Save As button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SaveAs_Click(object sender, EventArgs e)
-        {
-            //Create a Save Dialog
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            //Set the Filter
-            saveFileDialog.Filter = "CSV File (*.csv)|*.csv";
-
-            //Show the Dialog
-            saveFileDialog.ShowDialog();
-        }
-
-        /// <summary>
-        /// Called when the New->Classroom button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NewClassroom_Btn_Click(object sender, EventArgs e)
-        {
-            //Create a New Classrom form.
-            NewClassroom newClassroom = new NewClassroom(this);
-
-            //Show the new form.
-            newClassroom.Show();
-
-            //Hide the main form.
-            this.Hide();
-        }
-
-        /// <summary>
-        /// Load the classroom.
-        /// </summary>
-        /// <param name="classroom"></param>
-        private void LoadClassroom(Classroom classroom)
-        {
-            //Set the Techers Name text.
-            Teacher_Input.Text = classroom.teacher;
-            Teacher_Input.Enabled = true;
-
-            //Set the Class Name's text.
-            ClassName_Input.Text = classroom.className;
-            ClassName_Input.Enabled = true;
-
-            //Set the Room Number's text.
-            RoomNumber_Input.Text = classroom.roomNumber;
-            RoomNumber_Input.Enabled = true;
-
-            //Create the DataTable
-            CreateTable(classroom.size);
-        }
-
-        /// <summary>
-        /// Create the Table.
-        /// </summary>
-        private void CreateTable(int size)
-        {
-            //Add the columns and rows.
-            for (int i = 0; i < size; i++)
-            {
-                //Add the column.
-                dataTable.Columns.Add(i.ToString());
-
-                //Create a row.
-                DataRow row = dataTable.NewRow();
-
-                //Add the row to the datatable.
-                dataTable.Rows.Add(row);
-            }
-
-            //Set the datagrids datasource.
-            data.DataSource = dataTable;
-
-            //Add the row Headers.
-            for (int i = 0; i < classroom.size; i++)
-            {
-                data.Rows[i].HeaderCell.Value = i.ToString();
-            }
-
-            foreach (DataGridViewColumn column in data.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                column.MinimumWidth = 100;
-            }
-
-            //Load the friends into the table.
-            //LoadTable();
-        }
-
-        /// <summary>
-        /// Load the Students into the DataGrid.
-        /// </summary>
-        private void LoadStudents()
-        {
-
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-            
-
-            
-        }
-
-        // Keyboard Shortcuts
-        private void Main_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
-            //Ctrl + O
-            if (e.KeyCode == Keys.O && e.Modifiers == Keys.Control)
-            {
-                //Show the Open Dialog.
-                Open_Click(sender, e);
-            }
-            //Ctrl + S
-            else if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
-            {
-                //Show the Save Dialog.
-                Save_Click(sender, e);
-            }
-            //Ctrl + Shift + S
-            else if (e.KeyCode == Keys.S && e.Modifiers == (Keys.Control | Keys.Shift))
-            {
-                //Show the Save Dialog.
-                SaveAs_Click(sender, e);
             }
         }
     }

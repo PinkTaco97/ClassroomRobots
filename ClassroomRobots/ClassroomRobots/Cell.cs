@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ClassroomRobots
 {
-    class Cell
+    public class Cell
     {
         //The student in tis cell.
-        Student student;
+        public Student student;
 
         //Whether the cell is a table.
-        bool istable = false;
+        public bool istable = false;
     }
 }

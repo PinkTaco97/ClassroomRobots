@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassroomRobots
 {
-    class Classroom
+    public class Classroom
     {
         //The name of the teacher.
         public string teacher;

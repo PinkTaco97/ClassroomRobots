@@ -49,5 +49,58 @@ namespace ClassroomRobots
         {
 
         }
+
+        /// <summary>
+        /// Called when the Add Classroom Button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddClassroom_Btn_Click(object sender, EventArgs e)
+        {
+            //Get all of the data from the form.
+            string teacher = Input_TeacherName.Text;
+            string className = Input_ClassName.Text;
+            string roomName = Input_RoomName.Text;
+            int size = Decimal.ToInt32(Input_RoomSize.Value);
+
+            //If the teacher string is empty
+            if (String.IsNullOrEmpty(teacher))
+            {
+                //Message the user.
+                MessageBox.Show("Please input the teachers name.");
+
+                return;
+            }
+            //If the class name is empty.
+            else if (String.IsNullOrEmpty(className))
+            {
+                //Message the user.
+                MessageBox.Show("Please input the class name.");
+
+                return;
+            }
+            //If the room name is empty.
+            else if (String.IsNullOrEmpty(roomName))
+            {
+                //Message the user.
+                MessageBox.Show("Please input the room name.");
+
+                return;
+            }
+            else
+            {
+                //Add a student to the classroom.
+                main.classroom = new Classroom(teacher, className, roomName, size);
+
+                //Close this window.
+                this.Close();
+
+                //Load The new Classroom into the application
+                main.LoadClassroom(main.classroom);
+
+                //Show the main window.
+                main.Show();
+            }
+        }
     }
 }
