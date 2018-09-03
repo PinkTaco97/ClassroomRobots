@@ -191,6 +191,11 @@ namespace ClassroomRobots
         /// <param name="classroom"></param>
         public void LoadClassroom(Classroom classroom)
         {
+            //Set the menuitems to enabled.
+            MenuItem_New_Student.Enabled = true;
+            MenuItem_Save.Enabled = true;
+            MenuItem_SaveAs.Enabled = true;
+
             //Set the Techers Name text.
             Input_Teacher.Text = classroom.teacher;
             Input_Teacher.Enabled = true;
