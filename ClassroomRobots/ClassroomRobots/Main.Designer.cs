@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_Update = new System.Windows.Forms.Button();
             this.StudentData = new System.Windows.Forms.DataGridView();
@@ -96,6 +96,7 @@
             this.button_Update.TabIndex = 12;
             this.button_Update.Text = "Update";
             this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
             // 
             // StudentData
             // 
@@ -140,6 +141,7 @@
             0,
             0,
             0});
+            this.Input_Size.ValueChanged += new System.EventHandler(this.Input_Size_ValueChanged);
             // 
             // label4
             // 
@@ -252,13 +254,13 @@
             this.MenuItem_New_Classroom,
             this.MenuItem_New_Student});
             this.MenuItem_New.Name = "MenuItem_New";
-            this.MenuItem_New.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_New.Size = new System.Drawing.Size(114, 22);
             this.MenuItem_New.Text = "New";
             // 
             // MenuItem_New_Classroom
             // 
             this.MenuItem_New_Classroom.Name = "MenuItem_New_Classroom";
-            this.MenuItem_New_Classroom.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_New_Classroom.Size = new System.Drawing.Size(130, 22);
             this.MenuItem_New_Classroom.Text = "Classroom";
             this.MenuItem_New_Classroom.Click += new System.EventHandler(this.NewClassroom_Btn_Click);
             // 
@@ -266,27 +268,27 @@
             // 
             this.MenuItem_New_Student.Enabled = false;
             this.MenuItem_New_Student.Name = "MenuItem_New_Student";
-            this.MenuItem_New_Student.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_New_Student.Size = new System.Drawing.Size(130, 22);
             this.MenuItem_New_Student.Text = "Student";
             this.MenuItem_New_Student.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
             // 
             // MenuItem_Open
             // 
             this.MenuItem_Open.Name = "MenuItem_Open";
-            this.MenuItem_Open.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_Open.Size = new System.Drawing.Size(114, 22);
             this.MenuItem_Open.Text = "Open";
             this.MenuItem_Open.Click += new System.EventHandler(this.Open_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(111, 6);
             // 
             // MenuItem_Save
             // 
             this.MenuItem_Save.Enabled = false;
             this.MenuItem_Save.Name = "MenuItem_Save";
-            this.MenuItem_Save.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_Save.Size = new System.Drawing.Size(114, 22);
             this.MenuItem_Save.Text = "Save";
             this.MenuItem_Save.Click += new System.EventHandler(this.Save_Click);
             // 
@@ -294,19 +296,19 @@
             // 
             this.MenuItem_SaveAs.Enabled = false;
             this.MenuItem_SaveAs.Name = "MenuItem_SaveAs";
-            this.MenuItem_SaveAs.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_SaveAs.Size = new System.Drawing.Size(114, 22);
             this.MenuItem_SaveAs.Text = "Save As";
             this.MenuItem_SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
             // 
             // MenuItem_Exit
             // 
             this.MenuItem_Exit.Name = "MenuItem_Exit";
-            this.MenuItem_Exit.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_Exit.Size = new System.Drawing.Size(114, 22);
             this.MenuItem_Exit.Text = "Exit";
             this.MenuItem_Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -324,7 +326,7 @@
             // MenuItem_Veiw_Students
             // 
             this.MenuItem_Veiw_Students.Name = "MenuItem_Veiw_Students";
-            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(120, 22);
             this.MenuItem_Veiw_Students.Text = "Students";
             // 
             // MenuItem_Help
@@ -345,36 +347,39 @@
             this.ClassroomData.AllowUserToResizeColumns = false;
             this.ClassroomData.AllowUserToResizeRows = false;
             this.ClassroomData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ClassroomData.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.ClassroomData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClassroomData.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.ClassroomData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassroomData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassroomData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ClassroomData.ColumnHeadersHeight = 50;
             this.ClassroomData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ClassroomData.Cursor = System.Windows.Forms.Cursors.Default;
             this.ClassroomData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ClassroomData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ClassroomData.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClassroomData.Location = new System.Drawing.Point(334, 25);
             this.ClassroomData.MinimumSize = new System.Drawing.Size(650, 0);
             this.ClassroomData.MultiSelect = false;
             this.ClassroomData.Name = "ClassroomData";
             this.ClassroomData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassroomData.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassroomData.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ClassroomData.RowHeadersWidth = 50;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClassroomData.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClassroomData.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.ClassroomData.RowTemplate.Height = 50;
             this.ClassroomData.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ClassroomData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -382,6 +387,7 @@
             this.ClassroomData.ShowRowErrors = false;
             this.ClassroomData.Size = new System.Drawing.Size(650, 687);
             this.ClassroomData.TabIndex = 3;
+            this.ClassroomData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ClassroomData_Cell_Mouse_Down);
             this.ClassroomData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             // 
             // Main
@@ -392,7 +398,7 @@
             this.Controls.Add(this.ClassroomData);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.MinimumSize = new System.Drawing.Size(1000, 750);
+            this.MinimumSize = new System.Drawing.Size(1000, 736);
             this.Name = "Main";
             this.Text = "Classroom Robots";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);

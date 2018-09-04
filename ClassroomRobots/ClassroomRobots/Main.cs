@@ -285,6 +285,28 @@ namespace ClassroomRobots
                 //Show the Save Dialog.
                 SaveAs_Click(sender, e);
             }
+            else if (e.KeyCode == Keys.Space && ClassroomData.SelectedCells.Count == 1)
+            {
+                //Create a Context Menu.
+                ContextMenu menu = new ContextMenu();
+
+                //Create the MenuItems
+                MenuItem desk = new MenuItem("Desk");
+                MenuItem addStudent = new MenuItem("Add Student");
+
+                //Add the MenuItems to the Context Menu.
+                menu.MenuItems.Add(desk);
+                menu.MenuItems.Add("-");
+                menu.MenuItems.Add(addStudent);
+                addStudent.MenuItems.Add(new MenuItem("Nathan"));
+
+                Point location = ClassroomData.GetCellDisplayRectangle(ClassroomData.SelectedCells[0].ColumnIndex, ClassroomData.SelectedCells[0].RowIndex, false).Location;
+                location.X = location.X + 25;
+                location.Y = location.Y + 25;
+
+                //Show the Context Menu.
+                menu.Show(ClassroomData, location);
+            }
         }
 
         //Called when the student button is clicked.
@@ -386,6 +408,50 @@ namespace ClassroomRobots
 
                 //Load The new Classroom into the application
                 LoadClassroom(classroom);
+            }
+        }
+
+        //Called when the value is changed.
+        private void Input_Size_ValueChanged(object sender, EventArgs e)
+        {
+            //Enable the Update Button.
+            button_Update.Enabled = true;
+        }
+
+        //Called when the Update button is clicked.
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            //Disable the Update Button.
+            button_Update.Enabled = false;
+        }
+
+        //Called when the mouse is down on a cell.
+        private void ClassroomData_Cell_Mouse_Down(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                //Set the selected cell.
+                ClassroomData.CurrentCell = ClassroomData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                //Create a Context Menu.
+                ContextMenu menu = new ContextMenu();
+
+                //Create the MenuItems
+                MenuItem desk = new MenuItem("Desk");
+                MenuItem addStudent = new MenuItem("Add Student");
+
+                //Add the MenuItems to the Context Menu.
+                menu.MenuItems.Add(desk);
+                menu.MenuItems.Add("-");
+                menu.MenuItems.Add(addStudent);
+                addStudent.MenuItems.Add(new MenuItem("Nathan"));
+
+                Point location = ClassroomData.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
+                location.X = location.X + 25;
+                location.Y = location.Y + 25;
+
+                //Show the Context Menu.
+                menu.Show(ClassroomData, location);
             }
         }
     }
