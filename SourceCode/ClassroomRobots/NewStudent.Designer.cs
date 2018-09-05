@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Input_Name = new System.Windows.Forms.TextBox();
+            this.Button_AddStudent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -44,23 +44,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // textBox1
+            // Input_Name
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(17, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 30);
-            this.textBox1.TabIndex = 1;
+            this.Input_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Input_Name.Location = new System.Drawing.Point(17, 37);
+            this.Input_Name.Name = "Input_Name";
+            this.Input_Name.Size = new System.Drawing.Size(305, 30);
+            this.Input_Name.TabIndex = 1;
             // 
-            // button1
+            // Button_AddStudent
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(17, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(305, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Add Student";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Button_AddStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_AddStudent.Location = new System.Drawing.Point(17, 98);
+            this.Button_AddStudent.Name = "Button_AddStudent";
+            this.Button_AddStudent.Size = new System.Drawing.Size(305, 33);
+            this.Button_AddStudent.TabIndex = 2;
+            this.Button_AddStudent.Text = "Add Student";
+            this.Button_AddStudent.UseVisualStyleBackColor = true;
+            this.Button_AddStudent.Click += new System.EventHandler(this.Button_AddStudent_Click);
             // 
             // NewStudent
             // 
@@ -68,8 +69,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(334, 162);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Button_AddStudent);
+            this.Controls.Add(this.Input_Name);
             this.Controls.Add(this.label1);
             this.Name = "NewStudent";
             this.Text = "NewStudent";
@@ -82,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Input_Name;
+        private System.Windows.Forms.Button Button_AddStudent;
     }
 }

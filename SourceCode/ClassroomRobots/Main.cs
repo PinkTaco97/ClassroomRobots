@@ -41,6 +41,17 @@ namespace ClassroomRobots
         {
             //Initialize the Form.
             InitializeComponent();
+
+            //Create the student Table
+            studentTable = new DataTable();
+
+            //Add the columns to the table
+            studentTable.Columns.Add("Name");
+            studentTable.Columns.Add("X");
+            studentTable.Columns.Add("Y");
+
+            //Set the Student Datas Data Source.
+            StudentData.DataSource = studentTable;
         }
 
         /// <summary>
@@ -256,14 +267,6 @@ namespace ClassroomRobots
             //LoadTable();
         }
 
-        /// <summary>
-        /// Load the Students into the DataGrid.
-        /// </summary>
-        private void LoadStudents()
-        {
-
-        }
-
         // Keyboard Shortcuts
         private void Main_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -453,6 +456,12 @@ namespace ClassroomRobots
                 //Show the Context Menu.
                 menu.Show(ClassroomData, location);
             }
+        }
+
+        //Loads the students into the Student table.
+        public void LoadStudents()
+        {
+           
         }
     }
 }

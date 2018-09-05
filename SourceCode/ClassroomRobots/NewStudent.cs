@@ -39,5 +39,34 @@ namespace ClassroomRobots
             //Show the form.
             main.Show();
         }
+
+        /// <summary>
+        /// Called when the user clicks the AddStudent Button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AddStudent_Click(object sender, EventArgs e)
+        {
+            //Get the Students name from the form.
+            string name = Input_Name.Text;
+
+            //If the name is empty.
+            if (String.IsNullOrEmpty(name))
+            {
+                //Message the user.
+                MessageBox.Show("Please enter a name.");
+
+                return;
+            }
+            else
+            {
+                //Add a student to the Classroom.
+                main.classroom.students.Add(new Student(name, 99, 99));
+
+                //Load the Students
+                main.LoadStudents();
+            }
+
+        }
     }
 }
