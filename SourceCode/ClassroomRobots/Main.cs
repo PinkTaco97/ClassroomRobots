@@ -35,12 +35,20 @@ namespace ClassroomRobots
         public Classroom classroom = null;
 
         /// <summary>
+        /// The style of the Classroom Desks.
+        /// </summary>
+        public DataGridViewCellStyle deskStyle = new DataGridViewCellStyle();
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         public Main()
         {
             //Initialize the Form.
             InitializeComponent();
+
+            //Setup the Desk Style.
+            deskStyle.BackColor = Color.Chocolate;
 
             //Create the student Table
             studentTable = new DataTable();
@@ -87,7 +95,6 @@ namespace ClassroomRobots
                     this.Close();
                 }
             }
-            
         }
 
         /// <summary>
@@ -202,8 +209,9 @@ namespace ClassroomRobots
         /// Load the classroom.
         /// </summary>
         /// <param name="classroom"></param>
-        public void LoadClassroom(Classroom classroom)
+        public void LoadClassroom()
         {
+
             //Set the menuitems to enabled.
             MenuItem_New_Student.Enabled = true;
             MenuItem_Save.Enabled = true;
@@ -225,14 +233,28 @@ namespace ClassroomRobots
             Input_Size.Value = classroom.size;
             Input_Size.Enabled = true;
 
-            //Create the DataTable
-            CreateTable(classroom.size);
+            //If there are students in the class.
+            if(classroom.students.Count > 0)
+            {
+                //For each student.
+                for (int i = 0; i < classroom.students.Count; i++)
+                {
+                    //Get the Student.
+                    Student student = classroom.students[i];
+
+                    //If the Student is on the table.
+                    if (student.x > 0 && student.y > 0)
+                    {
+                        ClassroomData.Rows[(student.x - 1)].Cells[(student.y - 1)].Value = student.name;
+                    }
+                }
+            }
         }
 
         /// <summary>
         /// Create the Table.
         /// </summary>
-        private void CreateTable(int size)
+        public void CreateTable(int size)
         {
             //Create the ClassroomTable.
             classroomTable = new DataTable();
@@ -411,8 +433,11 @@ namespace ClassroomRobots
                 classroom = new Classroom(teacher, className, roomNumber, size);
                 classroom.students = students;
 
+                //Create the Classroom Table
+                CreateTable(classroom.size);
+
                 //Load The new Classroom into the application
-                LoadClassroom(classroom);
+                LoadClassroom();
 
                 //Load the Students into the student table
                 LoadStudents();
@@ -444,9 +469,6 @@ namespace ClassroomRobots
                 //Create a Context Menu.
                 ContextMenu menu = new ContextMenu();
 
-                //menu += new ToolItemClickedEventHandler(contexMenu_ItemClicked);
-
-
                 //Create the MenuItems
                 MenuItem desk = new MenuItem("Desk");
                 MenuItem addStudent = new MenuItem("Add Student");
@@ -456,21 +478,22 @@ namespace ClassroomRobots
                 menu.MenuItems.Add("-");
                 menu.MenuItems.Add(addStudent);
 
+                desk.Click += new System.EventHandler(ContextMenu_Click);
+
                 //If there are students in the class.
                 if(classroom.students.Count > 0)
                 {
                     //For each student in the class.
                     for (int i = 0; i < classroom.students.Count; i++)
                     {
+                        //Create the Menuitem.
                         MenuItem student = new MenuItem(classroom.students[i].name);
 
                         //Add the student to the menu.
                         addStudent.MenuItems.Add(student);
 
-                        student.Click += new System.EventHandler(ContextMenu_Click);
-
-
-
+                        //Add the Event Handler.
+                        student.Click += new System.EventHandler(ContextMenu_AddStudent_Click);
                     }
                 }
                 else
@@ -493,13 +516,34 @@ namespace ClassroomRobots
             //Get the Menu Item
             MenuItem item = (MenuItem)sender;
 
-            //Get the student
+            //Set the current Cells style.
+            ClassroomData.CurrentCell.Style = deskStyle;
+
+            //UnSelect the cell.
+            ClassroomData.CurrentCell = null;
+        }
+
+        //Called when a menuItem on the context menu is clicked.
+        private void ContextMenu_AddStudent_Click(object sender, EventArgs e)
+        {
+            //Get the Menu Item.
+            MenuItem item = (MenuItem)sender;
+
+            //Get the Student.
             Student student = classroom.students[item.Index];
 
-            //MessageBox.Show(student.name);
+            //Get the Cruuent Cell.
+            DataGridViewCell cell = ClassroomData.CurrentCell;
 
-            ClassroomData.CurrentCell.Value = student.name;
+            //Set the Stuedents X and Y.
+            student.x = cell.RowIndex + 1;
+            student.y = cell.ColumnIndex + 1;
 
+            //Refresh the Student Table.
+            LoadStudents();
+
+            //Refresh the Classroom Table.
+            LoadClassroom();
         }
 
         //Loads the students into the Student table.
@@ -524,9 +568,9 @@ namespace ClassroomRobots
 
                 //Add the row to the table.
                 studentTable.Rows.Add(row);
-
             }
 
+            //Set the Student Table to enabled.
             StudentData.Enabled = true;
         }
     }

@@ -95,8 +95,10 @@ namespace ClassroomRobots
                 //Close this window.
                 this.Close();
 
+                main.CreateTable(size);
+
                 //Load The new Classroom into the application
-                main.LoadClassroom(main.classroom);
+                main.LoadClassroom();
 
                 //Clear the Student table
                 main.studentTable.Clear();
