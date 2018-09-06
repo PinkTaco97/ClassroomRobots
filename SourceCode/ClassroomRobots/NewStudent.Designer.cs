@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Input_Name = new System.Windows.Forms.TextBox();
             this.Button_AddStudent = new System.Windows.Forms.Button();
@@ -72,6 +73,8 @@
             this.Controls.Add(this.Button_AddStudent);
             this.Controls.Add(this.Input_Name);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(350, 200);
+            this.MinimumSize = new System.Drawing.Size(350, 200);
             this.Name = "NewStudent";
             this.Text = "NewStudent";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewStudent_Closing);

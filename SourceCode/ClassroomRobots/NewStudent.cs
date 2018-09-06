@@ -61,10 +61,16 @@ namespace ClassroomRobots
             else
             {
                 //Add a student to the Classroom.
-                main.classroom.students.Add(new Student(name, 99, 99));
+                main.classroom.students.Add(new Student(name, 0, 0));
 
                 //Load the Students
                 main.LoadStudents();
+
+                //Close this form
+                this.Close();
+
+                //Show the Main Form
+                main.Show();
             }
 
         }

@@ -98,6 +98,9 @@ namespace ClassroomRobots
                 //Load The new Classroom into the application
                 main.LoadClassroom(main.classroom);
 
+                //Clear the Student table
+                main.studentTable.Clear();
+
                 //Show the main window.
                 main.Show();
             }

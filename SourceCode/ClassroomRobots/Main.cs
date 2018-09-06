@@ -52,6 +52,8 @@ namespace ClassroomRobots
 
             //Set the Student Datas Data Source.
             StudentData.DataSource = studentTable;
+
+            StudentData.Enabled = false;
         }
 
         /// <summary>
@@ -236,7 +238,7 @@ namespace ClassroomRobots
             classroomTable = new DataTable();
 
             //Add the columns and rows.
-            for (int i = 0; i < size; i++)
+            for (int i = 1; i <= size; i++)
             {
                 //Add the column.
                 classroomTable.Columns.Add(i.ToString());
@@ -252,9 +254,9 @@ namespace ClassroomRobots
             ClassroomData.DataSource = classroomTable;
 
             //Add the row Headers.
-            for (int i = 0; i < classroom.size; i++)
+            for (int i = 1; i <= classroom.size; i++)
             {
-                ClassroomData.Rows[i].HeaderCell.Value = i.ToString();
+                ClassroomData.Rows[(i - 1)].HeaderCell.Value = i.ToString();
             }
 
             foreach (DataGridViewColumn column in ClassroomData.Columns)
@@ -411,6 +413,9 @@ namespace ClassroomRobots
 
                 //Load The new Classroom into the application
                 LoadClassroom(classroom);
+
+                //Load the Students into the student table
+                LoadStudents();
             }
         }
 
@@ -439,6 +444,9 @@ namespace ClassroomRobots
                 //Create a Context Menu.
                 ContextMenu menu = new ContextMenu();
 
+                //menu += new ToolItemClickedEventHandler(contexMenu_ItemClicked);
+
+
                 //Create the MenuItems
                 MenuItem desk = new MenuItem("Desk");
                 MenuItem addStudent = new MenuItem("Add Student");
@@ -447,7 +455,28 @@ namespace ClassroomRobots
                 menu.MenuItems.Add(desk);
                 menu.MenuItems.Add("-");
                 menu.MenuItems.Add(addStudent);
-                addStudent.MenuItems.Add(new MenuItem("Nathan"));
+
+                //If there are students in the class.
+                if(classroom.students.Count > 0)
+                {
+                    //For each student in the class.
+                    for (int i = 0; i < classroom.students.Count; i++)
+                    {
+                        MenuItem student = new MenuItem(classroom.students[i].name);
+
+                        //Add the student to the menu.
+                        addStudent.MenuItems.Add(student);
+
+                        student.Click += new System.EventHandler(ContextMenu_Click);
+
+
+
+                    }
+                }
+                else
+                {
+                    addStudent.Enabled = false;
+                }
 
                 Point location = ClassroomData.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
                 location.X = location.X + 25;
@@ -458,10 +487,47 @@ namespace ClassroomRobots
             }
         }
 
+        //Called when a menuItem on the context menu is clicked.
+        private void ContextMenu_Click(object sender, EventArgs e)
+        {
+            //Get the Menu Item
+            MenuItem item = (MenuItem)sender;
+
+            //Get the student
+            Student student = classroom.students[item.Index];
+
+            //MessageBox.Show(student.name);
+
+            ClassroomData.CurrentCell.Value = student.name;
+
+        }
+
         //Loads the students into the Student table.
         public void LoadStudents()
         {
-           
+            //Clear the Student table
+            studentTable.Clear();
+
+            //Create the new row.
+            DataRow row;
+
+            //For each Student in the Class.
+            for (int i = 0; i < classroom.students.Count; i++)
+            {
+                //Create a new row.
+                row = studentTable.NewRow();
+
+                //Add the data to the row.
+                row[0] = classroom.students[i].name;
+                row[1] = classroom.students[i].x;
+                row[2] = classroom.students[i].y;
+
+                //Add the row to the table.
+                studentTable.Rows.Add(row);
+
+            }
+
+            StudentData.Enabled = true;
         }
     }
 }

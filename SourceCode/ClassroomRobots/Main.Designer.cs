@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,6 +60,7 @@
             this.MenuItem_Veiw_Students = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Help = new System.Windows.Forms.ToolStripButton();
             this.ClassroomData = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_Size)).BeginInit();
@@ -100,10 +102,21 @@
             // 
             // StudentData
             // 
+            this.StudentData.AllowUserToAddRows = false;
+            this.StudentData.AllowUserToDeleteRows = false;
+            this.StudentData.AllowUserToResizeColumns = false;
+            this.StudentData.AllowUserToResizeRows = false;
+            this.StudentData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.StudentData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StudentData.Location = new System.Drawing.Point(11, 317);
+            this.StudentData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.StudentData.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentData.Location = new System.Drawing.Point(13, 315);
+            this.StudentData.MultiSelect = false;
             this.StudentData.Name = "StudentData";
-            this.StudentData.Size = new System.Drawing.Size(300, 357);
+            this.StudentData.RowHeadersVisible = false;
+            this.StudentData.RowHeadersWidth = 4;
+            this.StudentData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.StudentData.Size = new System.Drawing.Size(303, 357);
             this.StudentData.TabIndex = 11;
             // 
             // label5
@@ -390,6 +403,11 @@
             this.ClassroomData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ClassroomData_Cell_Mouse_Down);
             this.ClassroomData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +461,7 @@
         private System.Windows.Forms.DataGridView StudentData;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button_Update;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
