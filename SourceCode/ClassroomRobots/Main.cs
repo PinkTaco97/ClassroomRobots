@@ -211,6 +211,7 @@ namespace ClassroomRobots
         /// <param name="classroom"></param>
         public void LoadClassroom()
         {
+            CreateTable(classroom.size);
 
             //Set the menuitems to enabled.
             MenuItem_New_Student.Enabled = true;
