@@ -287,9 +287,6 @@ namespace ClassroomRobots
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 column.MinimumWidth = 100;
             }
-
-            //Load the friends into the table.
-            //LoadTable();
         }
 
         // Keyboard Shortcuts
@@ -573,6 +570,23 @@ namespace ClassroomRobots
 
             //Set the Student Table to enabled.
             StudentData.Enabled = true;
+        }
+
+        /// <summary>
+        /// Called when the View > Students button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Veiw_Students_Click(object sender, EventArgs e)
+        {
+            //Create a New Classrom form.
+            ViewStudents viewStudents = new ViewStudents(this);
+
+            //Show the new form.
+            viewStudents.Show();
+
+            //Hide the main form.
+            this.Hide();
         }
     }
 }

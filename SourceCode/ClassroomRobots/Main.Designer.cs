@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_Update = new System.Windows.Forms.Button();
             this.StudentData = new System.Windows.Forms.DataGridView();
@@ -339,8 +340,9 @@
             // MenuItem_Veiw_Students
             // 
             this.MenuItem_Veiw_Students.Name = "MenuItem_Veiw_Students";
-            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(120, 22);
+            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_Veiw_Students.Text = "Students";
+            this.MenuItem_Veiw_Students.Click += new System.EventHandler(this.MenuItem_Veiw_Students_Click);
             // 
             // MenuItem_Help
             // 
@@ -374,6 +376,14 @@
             this.ClassroomData.ColumnHeadersHeight = 50;
             this.ClassroomData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ClassroomData.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ClassroomData.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClassroomData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ClassroomData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ClassroomData.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -382,17 +392,17 @@
             this.ClassroomData.MultiSelect = false;
             this.ClassroomData.Name = "ClassroomData";
             this.ClassroomData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassroomData.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ClassroomData.RowHeadersWidth = 50;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClassroomData.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassroomData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.ClassroomData.RowHeadersWidth = 50;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClassroomData.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ClassroomData.RowTemplate.Height = 50;
             this.ClassroomData.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ClassroomData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
