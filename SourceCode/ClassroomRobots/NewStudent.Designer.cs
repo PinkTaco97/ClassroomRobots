@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Input_Name = new System.Windows.Forms.TextBox();
             this.Button_AddStudent = new System.Windows.Forms.Button();
@@ -52,6 +51,8 @@
             this.Input_Name.Name = "Input_Name";
             this.Input_Name.Size = new System.Drawing.Size(305, 30);
             this.Input_Name.TabIndex = 1;
+            this.Input_Name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Input_Name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Name_KeyDown);
             // 
             // Button_AddStudent
             // 
@@ -69,7 +70,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(334, 162);
+            this.ClientSize = new System.Drawing.Size(334, 161);
             this.Controls.Add(this.Button_AddStudent);
             this.Controls.Add(this.Input_Name);
             this.Controls.Add(this.label1);

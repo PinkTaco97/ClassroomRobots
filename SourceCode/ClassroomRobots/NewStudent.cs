@@ -74,5 +74,19 @@ namespace ClassroomRobots
             }
 
         }
+
+        /// <summary>
+        /// Called when a key is down on the Input_Name field.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Name_KeyDown(object sender, KeyEventArgs e)
+        {
+            //If the enter key is down
+            if (e.KeyCode == Keys.Enter)
+            {
+                Button_AddStudent_Click(sender, e);
+            }
+        }
     }
 }

@@ -288,6 +288,7 @@ namespace ClassroomRobots
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 column.MinimumWidth = 100;
+                column.Width = 100;
             }
         }
 
