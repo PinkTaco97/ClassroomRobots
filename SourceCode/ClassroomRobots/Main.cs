@@ -48,7 +48,7 @@ namespace ClassroomRobots
             InitializeComponent();
 
             //Setup the Desk Style.
-            deskStyle.BackColor = Color.Chocolate;
+            deskStyle.BackColor = Color.HotPink;
 
             //Create the student Table
             studentTable = new DataTable();
@@ -217,6 +217,7 @@ namespace ClassroomRobots
             MenuItem_New_Student.Enabled = true;
             MenuItem_Save.Enabled = true;
             MenuItem_SaveAs.Enabled = true;
+            MenuItem_Veiw_Students.Enabled = true;
 
             //Set the Techers Name text.
             Input_Teacher.Text = classroom.teacher;
@@ -233,6 +234,7 @@ namespace ClassroomRobots
             //Set the Room Size.
             Input_Size.Value = classroom.size;
             Input_Size.Enabled = true;
+            button_Update.Enabled = false;
 
             //If there are students in the class.
             if(classroom.students.Count > 0)
@@ -452,6 +454,12 @@ namespace ClassroomRobots
         //Called when the Update button is clicked.
         private void button_Update_Click(object sender, EventArgs e)
         {
+            //Set the new classroom size.
+            classroom.size = (int)Input_Size.Value;
+
+            //Recreate the classoom table.
+            CreateTable(classroom.size);
+
             //Disable the Update Button.
             button_Update.Enabled = false;
         }
@@ -587,6 +595,20 @@ namespace ClassroomRobots
 
             //Hide the main form.
             this.Hide();
+        }
+
+        /// <summary>
+        /// Called when a key is down on the classroom size field.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Size_KeyDown(object sender, KeyEventArgs e)
+        {
+            //If the enter Key is down.
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_Update_Click(sender, e);
+            }
         }
     }
 }

@@ -19,6 +19,9 @@ namespace ClassroomRobots
 
         //The binary tree the node belongs to
         public Tree tree = null;
+
+        //This index in the sorted list.
+        public int index;
         
         /// <summary>
         /// Constructor.
@@ -91,6 +94,9 @@ namespace ClassroomRobots
                 //Traverse the right node.
                 this.right.Traverse();
             }
+
+            //Reached the end of the tree.
+            tree.setIndex();
         }
 
         /// <summary>

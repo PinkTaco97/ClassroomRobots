@@ -58,6 +58,19 @@ namespace ClassroomRobots
         }
 
         /// <summary>
+        /// Sets the index's of the nodes.
+        /// </summary>
+        public void setIndex()
+        {
+            //For each node.
+            for (int i = 0; i < sorted.Count; i++)
+            {
+                //Set the nodes index.
+                sorted[i].index = i;
+            }
+        }
+
+        /// <summary>
         /// Search through the tree.
         /// </summary>
         /// <param name="val">The value to search for.</param>

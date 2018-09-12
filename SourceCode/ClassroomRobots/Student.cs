@@ -29,5 +29,15 @@ namespace ClassroomRobots
             this.x = x;
             this.y = y;
         }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="name"></param>
+        public Student(string name)
+        {
+            //Set the students name.
+            this.name = name;
+        }
     }
 }
