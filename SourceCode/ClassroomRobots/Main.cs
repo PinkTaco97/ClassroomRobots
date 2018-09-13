@@ -252,6 +252,19 @@ namespace ClassroomRobots
                     }
                 }
             }
+
+            //If there are desks in the class.
+            if (classroom.desks.Count > 0)
+            {
+                //For each Desk.
+                for (int i = 0; i < classroom.desks.Count; i++)
+                {
+                    //Get the Desk
+                    Desk desk = classroom.desks[i];
+
+                    ClassroomData.Rows[(desk.x - 1)].Cells[(desk.y - 1)].Style = deskStyle;
+                }
+            }
         }
 
         /// <summary>
@@ -284,6 +297,7 @@ namespace ClassroomRobots
                 ClassroomData.Rows[(i - 1)].HeaderCell.Value = i.ToString();
             }
 
+            //Set the column size
             foreach (DataGridViewColumn column in ClassroomData.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -508,6 +522,7 @@ namespace ClassroomRobots
                     addStudent.Enabled = false;
                 }
 
+                //The location of the menu.
                 Point location = ClassroomData.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
                 location.X = location.X + 25;
                 location.Y = location.Y + 25;
@@ -523,8 +538,20 @@ namespace ClassroomRobots
             //Get the Menu Item
             MenuItem item = (MenuItem)sender;
 
+            //Get the Cruuent Cell.
+            DataGridViewCell cell = ClassroomData.CurrentCell;
+
+            //Create a Desk
+            Desk desk = new Desk(cell.RowIndex + 1, cell.ColumnIndex + 1);
+
+            //Add the desk to the classroom.
+            classroom.desks.Add(desk);
+
+            //Refresh the Classroom Table.
+            LoadClassroom();
+
             //Set the current Cells style.
-            ClassroomData.CurrentCell.Style = deskStyle;
+            //ClassroomData.CurrentCell.Style = deskStyle;
 
             //UnSelect the cell.
             ClassroomData.CurrentCell = null;
@@ -610,6 +637,31 @@ namespace ClassroomRobots
             {
                 button_Update_Click(sender, e);
             }
+        }
+
+        /// <summary>
+        /// Called when the Clear Classroom Button is Clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Clear_Classroom_Click(object sender, EventArgs e)
+        {
+            //Clear all the tables.
+            classroom.desks.Clear();
+
+            //If the classroom has students in it.
+            if (classroom.students.Count > 0)
+            {
+                //For each student.
+                for (int i = 0; i < classroom.students.Count; i++)
+                {
+                    classroom.students[i].x = 0;
+                    classroom.students[i].y = 0;
+                }
+            }
+
+            //Refresh the classroom.
+            LoadClassroom();
         }
     }
 }

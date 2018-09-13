@@ -21,7 +21,7 @@ namespace ClassroomRobots
         public List<Student> students;
 
         //The layout of the classroom.
-        public List<List<Cell>> layout;
+        public List<Desk> desks = new List<Desk>();
 
         //The size of the classrooom
         public int size = 5;

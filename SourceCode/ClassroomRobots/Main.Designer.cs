@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_Update = new System.Windows.Forms.Button();
             this.StudentData = new System.Windows.Forms.DataGridView();
@@ -57,12 +57,12 @@
             this.MenuItem_SaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.Clear_Classroom = new System.Windows.Forms.ToolStripButton();
             this.MenuItem_Veiw = new System.Windows.Forms.ToolStripDropDownButton();
             this.MenuItem_Veiw_Students = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Help = new System.Windows.Forms.ToolStripButton();
             this.ClassroomData = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_Size)).BeginInit();
@@ -239,7 +239,7 @@
             this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(5);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
-            this.toolStripButton1,
+            this.Clear_Classroom,
             this.MenuItem_Veiw,
             this.MenuItem_Help});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -329,6 +329,18 @@
             this.MenuItem_Exit.Text = "Exit";
             this.MenuItem_Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // Clear_Classroom
+            // 
+            this.Clear_Classroom.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.Clear_Classroom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Clear_Classroom.Image = ((System.Drawing.Image)(resources.GetObject("Clear_Classroom.Image")));
+            this.Clear_Classroom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Clear_Classroom.Name = "Clear_Classroom";
+            this.Clear_Classroom.Size = new System.Drawing.Size(97, 22);
+            this.Clear_Classroom.Text = "Clear Classroom";
+            this.Clear_Classroom.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.Clear_Classroom.Click += new System.EventHandler(this.Clear_Classroom_Click);
+            // 
             // MenuItem_Veiw
             // 
             this.MenuItem_Veiw.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -344,7 +356,7 @@
             // 
             this.MenuItem_Veiw_Students.Enabled = false;
             this.MenuItem_Veiw_Students.Name = "MenuItem_Veiw_Students";
-            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(152, 22);
+            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(120, 22);
             this.MenuItem_Veiw_Students.Text = "Students";
             this.MenuItem_Veiw_Students.Click += new System.EventHandler(this.MenuItem_Veiw_Students_Click);
             // 
@@ -369,25 +381,25 @@
             this.ClassroomData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClassroomData.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.ClassroomData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassroomData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassroomData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ClassroomData.ColumnHeadersHeight = 50;
             this.ClassroomData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ClassroomData.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ClassroomData.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ClassroomData.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClassroomData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ClassroomData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ClassroomData.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -396,17 +408,17 @@
             this.ClassroomData.MultiSelect = false;
             this.ClassroomData.Name = "ClassroomData";
             this.ClassroomData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassroomData.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassroomData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ClassroomData.RowHeadersWidth = 50;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClassroomData.RowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClassroomData.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ClassroomData.RowTemplate.Height = 50;
             this.ClassroomData.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ClassroomData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -421,17 +433,6 @@
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(97, 22);
-            this.toolStripButton1.Text = "Clear Classroom";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
             // Main
             // 
@@ -487,7 +488,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button_Update;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton Clear_Classroom;
     }
 }
 
