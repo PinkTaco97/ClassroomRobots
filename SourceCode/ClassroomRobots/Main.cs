@@ -104,7 +104,17 @@ namespace ClassroomRobots
         /// <param name="e"></param>
         private void Save_Click(object sender, EventArgs e)
         {
-            
+            //If there is a path to save the file.
+            if (!String.IsNullOrEmpty(path))
+            {
+                //Try to write to the file.
+                WriteFile(path);
+            }
+            else
+            {
+                //Open the Save AS Dialog.
+                SaveAs_Click(sender, e);
+            }
         }
 
         /// <summary>
@@ -156,8 +166,15 @@ namespace ClassroomRobots
             //Set the Filter
             saveFileDialog.Filter = "CSV File (*.csv)|*.csv";
 
-            //Show the Dialog
-            saveFileDialog.ShowDialog();
+            //If the user has selected a path to save the file.
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Set the file path.
+                path = saveFileDialog.FileName;
+
+                //Try to write to the selected file.
+                WriteFile(path);
+            }
         }
 
         /// <summary>
@@ -376,86 +393,11 @@ namespace ClassroomRobots
             //If the user has selected a file to open.
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //Get the path of the file.
+                //Set the file path
                 path = openFileDialog.FileName;
 
-                //The teachers Name.
-                string teacher = "";
-
-                //The Class Name.
-                string className = "";
-
-                //The Room Number.
-                string roomNumber = "";
-
-                //The Size of the classroom.
-                int size = 0;
-
-                //The List of students in the class.
-                List<Student> students = new List<Student>();
-
-                //Read the file.
-                using (var reader = new StreamReader(@path))
-                {
-                    //While there are still lines in the file.
-                    while (!reader.EndOfStream)
-                    {
-                        //Read the current line.
-                        var line = reader.ReadLine();
-
-                        //Split the line into the seperate values.
-                        var values = line.Split(',');
-
-                        //If this line is the Teacher.
-                        if (values[0] == "%TEACHER%")
-                        {
-                            //Set the teachers name
-                            teacher = values[1];
-                        }
-                        //If this line is the Class.
-                        else if (values[0] == "%CLASS%")
-                        {
-                            //Set the class name
-                            className = values[1];
-                        }
-                        //If this line is the Room Number.
-                        else if (values[0] == "%ROOM%")
-                        {
-                            //Set the room number
-                            roomNumber = values[1];
-                        }
-                        //If this line is th Room Size.
-                        else if (values[0] == "%SIZE%")
-                        {
-                            //Set the room size
-                            size = Int32.Parse(values[1]);
-                        }
-                        else if (!string.IsNullOrEmpty(teacher) && !string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(roomNumber) && size != 0)
-                        {
-                            //Add a new Student.
-                            students.Add(new Student(values[0], Int32.Parse(values[1]), Int32.Parse(values[2])));
-                        }
-                        else
-                        {
-                            //message user.
-                            MessageBox.Show("Please input a classroom save file.");
-                            return;
-                        }
-                    }
-                }
-
-                //Create a new Classroom
-                classroom = new Classroom(teacher, className, roomNumber, size);
-                classroom.students = students;
-
-                //Create the Classroom Table
-                CreateTable(classroom.size);
-
-                //Load The new Classroom into the application
-                LoadClassroom();
-
-                //Load the Students into the student table
-                LoadStudents();
+                //Try to read the File.
+                ReadFile(path);
             }
         }
 
@@ -662,6 +604,144 @@ namespace ClassroomRobots
 
             //Refresh the classroom.
             LoadClassroom();
+        }
+
+        /// <summary>
+        /// Read a file.
+        /// </summary>
+        /// <param name="path"></param>
+        private void ReadFile(string path)
+        {
+            //The teachers Name.
+            string teacher = "";
+
+            //The Class Name.
+            string className = "";
+
+            //The Room Number.
+            string roomNumber = "";
+
+            //The Size of the classroom.
+            int size = 0;
+
+            //The List of students in the class.
+            List<Student> students = new List<Student>();
+
+            //The List of desks in the class.
+            List<Desk> desks = new List<Desk>();
+
+            //Read the file.
+            using (var reader = new StreamReader(@path))
+            {
+                //While there are still lines in the file.
+                while (!reader.EndOfStream)
+                {
+                    //Read the current line.
+                    var line = reader.ReadLine();
+
+                    //Split the line into the seperate values.
+                    var values = line.Split(',');
+
+                    //If this line is the Teacher.
+                    if (values[0] == "%TEACHER%")
+                    {
+                        //Set the teachers name
+                        teacher = values[1];
+                    }
+                    //If this line is the Class.
+                    else if (values[0] == "%CLASS%")
+                    {
+                        //Set the class name
+                        className = values[1];
+                    }
+                    //If this line is the Room Number.
+                    else if (values[0] == "%ROOM%")
+                    {
+                        //Set the room number
+                        roomNumber = values[1];
+                    }
+                    //If this line is th Room Size.
+                    else if (values[0] == "%SIZE%")
+                    {
+                        //Set the room size
+                        size = Int32.Parse(values[1]);
+                    }
+                    else if (values[0] == "%DESK%")
+                    {
+                        //Add a new Desk.
+                        desks.Add(new Desk(Int32.Parse(values[1]), Int32.Parse(values[2])));
+                    }
+                    //else if (!string.IsNullOrEmpty(teacher) && !string.IsNullOrEmpty(className) && !string.IsNullOrEmpty(roomNumber) && size != 0)
+                    else if (values[0] == "%STUDENT%")
+                    {
+                        //Add a new Student.
+                        students.Add(new Student(values[1], Int32.Parse(values[2]), Int32.Parse(values[3])));
+                    }
+                    else
+                    {
+                        //message user.
+                        MessageBox.Show("Please input a classroom save file.");
+                        return;
+                    }
+                }
+            }
+
+            //Create a new Classroom
+            classroom = new Classroom(teacher, className, roomNumber, size);
+            classroom.students = students;
+            classroom.desks = desks;
+
+            //Create the Classroom Table
+            CreateTable(classroom.size);
+
+            //Load The new Classroom into the application
+            LoadClassroom();
+
+            //Load the Students into the student table
+            LoadStudents();
+        }   
+
+        /// <summary>
+        /// Write to a file.
+        /// </summary>
+        /// <param name="path"></param>
+        private void WriteFile(string path)
+        {
+            //The file path.
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("%TEACHER%," + classroom.teacher);
+            sb.AppendLine("%CLASS%," + classroom.className);
+            sb.AppendLine("%ROOM%," + classroom.roomNumber);
+            sb.AppendLine("%SIZE%," + classroom.size);
+
+            //If there are desks in the classroom
+            if(classroom.desks.Count > 0)
+            {
+                //For each of the desks.
+                for (int i = 0; i < classroom.desks.Count; i++)
+                {
+                    //Make a line in the .csv file for them.
+                    sb.AppendLine("%DESK%," + classroom.desks[i].x + "," + classroom.desks[i].y);
+                }
+            }
+
+            //If there are students in the classroom
+            if(classroom.students.Count > 0)
+            {
+                //For each of the students.
+                for (int i = 0; i < classroom.students.Count; i++)
+                {
+                    //Make a line in the .csv file for them.
+                    sb.AppendLine("%STUDENT%," + classroom.students[i].name + "," + classroom.students[i].x + "," + classroom.students[i].y);
+                }
+            }
+
+            //Clear the .csv file.
+            System.IO.File.WriteAllText(@path, string.Empty);
+
+            //Update the .csv file.
+            File.AppendAllText(@path, sb.ToString());
         }
     }
 }

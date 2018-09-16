@@ -1,10 +1,6 @@
-%TEACHER%,Teacher
-%CLASS%,Class Name
-%ROOM%,15
-%SIZE%,20
-Nathan,0,0
-Rosemary,0,0
-David,0,0
-Jacob,0,0
-Milly,0,0
-Tammy,0,0
+%TEACHER%,David
+%CLASS%,Software
+%ROOM%,14
+%SIZE%,5
+%DESK%,2,2
+%STUDENT%,Nathan,3,2
