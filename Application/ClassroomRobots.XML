@@ -1,0 +1,598 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassroomRobots</name>
+    </assembly>
+    <members>
+        <member name="T:ClassroomRobots.Classroom">
+            <summary>
+            The Classroom Class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Classroom.teacher">
+            <summary>
+            The name of the teacher.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Classroom.className">
+            <summary>
+            The name of the class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Classroom.roomNumber">
+            <summary>
+            The room number.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Classroom.students">
+            <summary>
+            A list of students in the class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Classroom.desks">
+            <summary>
+            The layout of the classroom.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Classroom.size">
+            <summary>
+            The size of the classrooom
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Classroom.#ctor(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            New Classroom.
+            </summary>
+            <param name="teacher"></param>
+            <param name="className"></param>
+            <param name="roomNumber"></param>
+        </member>
+        <member name="M:ClassroomRobots.Classroom.#ctor(System.String,System.String,System.String,System.Collections.Generic.List{ClassroomRobots.Student})">
+            <summary>
+            Classroom with students.
+            </summary>
+            <param name="teacher"></param>
+            <param name="className"></param>
+            <param name="roomNumber"></param>
+            <param name="students"></param>
+        </member>
+        <member name="T:ClassroomRobots.Desk">
+            <summary>
+            The Desk Class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Desk.x">
+            <summary>
+            The Desks postion on the X Axis.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Desk.y">
+            <summary>
+            The Desks position on the Y Axis.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Desk.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="T:ClassroomRobots.Main">
+            <summary>
+            The main form class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Main.path">
+            <summary>
+            the path of the current save file.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Main.classroomTable">
+            <summary>
+            The Classroom Table.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Main.studentTable">
+            <summary>
+            The Student Table.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Main.classroom">
+            <summary>
+            The classroom.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Main.deskStyle">
+            <summary>
+            The style of the Classroom Desks.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Main.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Main.File_New_Classroom_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the New->Classroom button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.File_New_Student_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the File->New->Student button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.File_Open_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Open button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.File_Save_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Save button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.File_SaveAs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Save As button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.File_Exit_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called When the File->Exit button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.Veiw_Students_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the View > Students button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.LoadClassroom">
+            <summary>
+            Load the classroom.
+            </summary>
+            <param name="classroom"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.CreateTable(System.Int32)">
+            <summary>
+            Create the Table.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Main.Main_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            KeyBoard Shortcuts.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.OpenClassroom">
+            <summary>
+            Displays the Open File Dialog.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Main.Input_Size_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Called when the value is changed on the Classroom Size.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.button_Update_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Update button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.ClassroomData_Cell_Mouse_Down(System.Object,System.Windows.Forms.DataGridViewCellMouseEventArgs)">
+            <summary>
+            Called when the mouse is down on a cell.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.ContextMenu_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when a menuItem on the context menu is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.ContextMenu_AddStudent_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when a menuItem on the context menu is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.LoadStudents">
+            <summary>
+            Loads the students into the Student table.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Main.Size_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Called when a key is down on the classroom size field.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.Clear_Classroom_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Clear Classroom Button is Clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.ReadFile(System.String)">
+            <summary>
+            Read a file.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:ClassroomRobots.Main.WriteFile(System.String)">
+            <summary>
+            Write to a file.
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="F:ClassroomRobots.Main.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Main.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ClassroomRobots.Main.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.NewClassroom.#ctor(ClassroomRobots.Main)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="main"></param>
+        </member>
+        <member name="M:ClassroomRobots.NewClassroom.NewClassroom_Closing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Called when the form is closing.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.NewClassroom.AddClassroom_Btn_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Add Classroom Button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ClassroomRobots.NewClassroom.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.NewClassroom.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ClassroomRobots.NewClassroom.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ClassroomRobots.NewStudent">
+            <summary>
+            The New Student Form.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.NewStudent.main">
+            <summary>
+            Reference to the Main form.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.NewStudent.#ctor(ClassroomRobots.Main)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="main"></param>
+        </member>
+        <member name="M:ClassroomRobots.NewStudent.NewStudent_Closing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Called when the form is closing.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.NewStudent.Button_AddStudent_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the user clicks the AddStudent Button.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.NewStudent.Name_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Called when a key is down on the Input_Name field.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ClassroomRobots.NewStudent.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.NewStudent.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ClassroomRobots.NewStudent.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ClassroomRobots.Node">
+            <summary>
+            The Node Class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Node.value">
+            <summary>
+            The Student the Node holds.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Node.left">
+            <summary>
+            The Left Node.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Node.right">
+            <summary>
+            The Right Node.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Node.tree">
+            <summary>
+            The binary tree the node belongs to.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Node.index">
+            <summary>
+            This index in the sorted list.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Node.#ctor(ClassroomRobots.Tree,ClassroomRobots.Student)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Node.AddNode(ClassroomRobots.Node)">
+            <summary>
+            Try to add a node to the current node.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:ClassroomRobots.Node.Traverse">
+            <summary>
+            Traverse throughout the Tree.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Node.Search(ClassroomRobots.Student)">
+            <summary>
+            Searches the current node.
+            </summary>
+            <param name="val">The value to search for.</param>
+            <returns>The found node.</returns>
+        </member>
+        <member name="T:ClassroomRobots.Program">
+            <summary>
+            The Main Application.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:ClassroomRobots.Student">
+            <summary>
+            The Student class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Student.name">
+            <summary>
+            The students name.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Student.x">
+            <summary>
+            The students position on the x axis.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Student.y">
+            <summary>
+            The students position on the y axis.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Student.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="name">The Students name.</param>
+            <param name="x">The Students X</param>
+            <param name="y">The Students Y</param>
+        </member>
+        <member name="M:ClassroomRobots.Student.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:ClassroomRobots.Tree">
+            <summary>
+            The Binary Tree Class.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Tree.root">
+            <summary>
+            The root of the tree.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.Tree.sorted">
+            <summary>
+            List of sorted values that the tree holds.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Tree.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Tree.AddValue(ClassroomRobots.Student)">
+            <summary>
+            Add a value to the tree.
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:ClassroomRobots.Tree.Traverse">
+            <summary>
+            Traverse through the tree.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Tree.setIndex">
+            <summary>
+            Sets the index's of the nodes.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.Tree.Search(ClassroomRobots.Student)">
+            <summary>
+            Search through the tree.
+            </summary>
+            <param name="val">The value to search for.</param>
+            <returns>The found node.</returns>
+        </member>
+        <member name="M:ClassroomRobots.Tree.Print">
+            <summary>
+            Print the sorted list to the console.
+            </summary>
+        </member>
+        <member name="T:ClassroomRobots.ViewStudents">
+            <summary>
+            The View Students Form.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.ViewStudents.main">
+            <summary>
+            Reference to the main Form.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.ViewStudents.tree">
+            <summary>
+            The Binary Tree.
+            </summary>
+        </member>
+        <member name="F:ClassroomRobots.ViewStudents.studentTable">
+            <summary>
+            The Student Table.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.#ctor(ClassroomRobots.Main)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="main"></param>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.CreateTable">
+            <summary>
+            Creates the student table.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.LoadTable">
+            <summary>
+            Loads the students into the table.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.ViewStudents_Closing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Called when the window is closing.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.Button_Search_Click(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Binary Search Button is clicked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.Serach_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Called when a Key is down when the search is selected.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:ClassroomRobots.ViewStudents.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ClassroomRobots.ViewStudents.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ClassroomRobots.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ClassroomRobots.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ClassroomRobots.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

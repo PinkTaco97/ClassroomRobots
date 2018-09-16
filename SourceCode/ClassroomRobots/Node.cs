@@ -6,21 +6,34 @@ using System.Threading.Tasks;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// The Node Class.
+    /// </summary>
     class Node
     {
-        //The value the Node holds.
+        /// <summary>
+        /// The Student the Node holds.
+        /// </summary>
         public Student value;
 
-        //The Left Node.
+        /// <summary>
+        /// The Left Node.
+        /// </summary>
         public Node left = null;
 
-        //The Right Node.
+        /// <summary>
+        /// The Right Node.
+        /// </summary>
         public Node right = null;
 
-        //The binary tree the node belongs to
+        /// <summary>
+        /// The binary tree the node belongs to.
+        /// </summary>
         public Tree tree = null;
 
-        //This index in the sorted list.
+        /// <summary>
+        /// This index in the sorted list.
+        /// </summary>
         public int index;
         
         /// <summary>

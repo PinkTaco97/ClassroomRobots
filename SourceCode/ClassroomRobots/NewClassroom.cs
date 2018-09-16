@@ -10,10 +10,15 @@ using System.Windows.Forms;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// New Classroom Form.
+    /// </summary>
     public partial class NewClassroom : Form
     {
 
-        //Reference to the Main form.
+        /// <summary>
+        /// Reference to the Main form.
+        /// </summary>
         public Main main;
 
         /// <summary>
@@ -38,16 +43,6 @@ namespace ClassroomRobots
         {
             //Show the form.
             main.Show();
-        }
-
-        /// <summary>
-        /// Called when the NewClassroom Form is loded.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NewClassroom_Load(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>

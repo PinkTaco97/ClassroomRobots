@@ -10,10 +10,14 @@ using System.Windows.Forms;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// The New Student Form.
+    /// </summary>
     public partial class NewStudent : Form
     {
-
-        //Reference to the Main form.
+        /// <summary>
+        /// Reference to the Main form.
+        /// </summary>
         public Main main;
 
         /// <summary>

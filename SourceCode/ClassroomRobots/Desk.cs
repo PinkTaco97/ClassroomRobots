@@ -11,8 +11,14 @@ namespace ClassroomRobots
     /// </summary>
     public class Desk
     {
-        //The Desks position.
+        /// <summary>
+        /// The Desks postion on the X Axis.
+        /// </summary>
         public int x;
+
+        /// <summary>
+        /// The Desks position on the Y Axis.
+        /// </summary>
         public int y;
 
         /// <summary>

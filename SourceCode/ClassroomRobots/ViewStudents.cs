@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// The View Students Form.
+    /// </summary>
     public partial class ViewStudents : Form
     {
         /// <summary>

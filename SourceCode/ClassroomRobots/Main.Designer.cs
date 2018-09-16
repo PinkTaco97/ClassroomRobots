@@ -271,63 +271,63 @@
             this.MenuItem_New_Classroom,
             this.MenuItem_New_Student});
             this.MenuItem_New.Name = "MenuItem_New";
-            this.MenuItem_New.Size = new System.Drawing.Size(114, 22);
+            this.MenuItem_New.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_New.Text = "New";
             // 
             // MenuItem_New_Classroom
             // 
             this.MenuItem_New_Classroom.Name = "MenuItem_New_Classroom";
-            this.MenuItem_New_Classroom.Size = new System.Drawing.Size(130, 22);
+            this.MenuItem_New_Classroom.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_New_Classroom.Text = "Classroom";
-            this.MenuItem_New_Classroom.Click += new System.EventHandler(this.NewClassroom_Btn_Click);
+            this.MenuItem_New_Classroom.Click += new System.EventHandler(this.File_New_Classroom_Click);
             // 
             // MenuItem_New_Student
             // 
             this.MenuItem_New_Student.Enabled = false;
             this.MenuItem_New_Student.Name = "MenuItem_New_Student";
-            this.MenuItem_New_Student.Size = new System.Drawing.Size(130, 22);
+            this.MenuItem_New_Student.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_New_Student.Text = "Student";
-            this.MenuItem_New_Student.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
+            this.MenuItem_New_Student.Click += new System.EventHandler(this.File_New_Student_Click);
             // 
             // MenuItem_Open
             // 
             this.MenuItem_Open.Name = "MenuItem_Open";
-            this.MenuItem_Open.Size = new System.Drawing.Size(114, 22);
+            this.MenuItem_Open.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_Open.Text = "Open";
-            this.MenuItem_Open.Click += new System.EventHandler(this.Open_Click);
+            this.MenuItem_Open.Click += new System.EventHandler(this.File_Open_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(111, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // MenuItem_Save
             // 
             this.MenuItem_Save.Enabled = false;
             this.MenuItem_Save.Name = "MenuItem_Save";
-            this.MenuItem_Save.Size = new System.Drawing.Size(114, 22);
+            this.MenuItem_Save.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_Save.Text = "Save";
-            this.MenuItem_Save.Click += new System.EventHandler(this.Save_Click);
+            this.MenuItem_Save.Click += new System.EventHandler(this.File_Save_Click);
             // 
             // MenuItem_SaveAs
             // 
             this.MenuItem_SaveAs.Enabled = false;
             this.MenuItem_SaveAs.Name = "MenuItem_SaveAs";
-            this.MenuItem_SaveAs.Size = new System.Drawing.Size(114, 22);
+            this.MenuItem_SaveAs.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_SaveAs.Text = "Save As";
-            this.MenuItem_SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
+            this.MenuItem_SaveAs.Click += new System.EventHandler(this.File_SaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // MenuItem_Exit
             // 
             this.MenuItem_Exit.Name = "MenuItem_Exit";
-            this.MenuItem_Exit.Size = new System.Drawing.Size(114, 22);
+            this.MenuItem_Exit.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_Exit.Text = "Exit";
-            this.MenuItem_Exit.Click += new System.EventHandler(this.Exit_Click);
+            this.MenuItem_Exit.Click += new System.EventHandler(this.File_Exit_Click);
             // 
             // Clear_Classroom
             // 
@@ -356,9 +356,9 @@
             // 
             this.MenuItem_Veiw_Students.Enabled = false;
             this.MenuItem_Veiw_Students.Name = "MenuItem_Veiw_Students";
-            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(120, 22);
+            this.MenuItem_Veiw_Students.Size = new System.Drawing.Size(152, 22);
             this.MenuItem_Veiw_Students.Text = "Students";
-            this.MenuItem_Veiw_Students.Click += new System.EventHandler(this.MenuItem_Veiw_Students_Click);
+            this.MenuItem_Veiw_Students.Click += new System.EventHandler(this.Veiw_Students_Click);
             // 
             // MenuItem_Help
             // 

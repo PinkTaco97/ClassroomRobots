@@ -16,7 +16,9 @@ namespace ClassroomRobots
     /// </summary>
     public partial class Main : Form
     {
-        //The path of the file.
+        /// <summary>
+        /// the path of the current save file.
+        /// </summary>
         public string path = "";
 
         /// <summary>
@@ -65,124 +67,11 @@ namespace ClassroomRobots
         }
 
         /// <summary>
-        /// Called When the Exit button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            //If a classroom hasnt already been loaded.
-            if (classroom == null)
-            {
-                //Close the form
-                this.Close();
-            }
-            //There is a classroom object.
-            else
-            {
-                //Whether the user wants to save the current classroom before making a new one.
-                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
-
-                //If the result was yes.
-                if (result == DialogResult.Yes)
-                {
-                    //Save the file.
-                    SaveAs_Click(sender, e);
-                }
-                else if (result == DialogResult.No)
-                {
-                    //Close the form
-                    this.Close();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Called when the Save button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Save_Click(object sender, EventArgs e)
-        {
-            //If there is a path to save the file.
-            if (!String.IsNullOrEmpty(path))
-            {
-                //Try to write to the file.
-                WriteFile(path);
-            }
-            else
-            {
-                //Open the Save AS Dialog.
-                SaveAs_Click(sender, e);
-            }
-        }
-
-        /// <summary>
-        /// Called when the Open button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Open_Click(object sender, EventArgs e)
-        {
-            //If a classroom hasnt already been loaded.
-            if(classroom == null)
-            {
-                //Open the classroom.
-                OpenClassroom();
-            }
-            //There is a classroom object.
-            else
-            {
-                //Whether the user wants to save the current classroom before making a new one.
-                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
-
-                //If the result was yes.
-                if (result == DialogResult.Yes)
-                {
-                    //Save the file.
-                    SaveAs_Click(sender, e);
-                }
-                else if (result == DialogResult.No)
-                {
-                    //Set the classroom to null.
-                    classroom = null;
-
-                    //Recall the function
-                    Open_Click(sender, e);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Called when the Save As button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SaveAs_Click(object sender, EventArgs e)
-        {
-            //Create a Save Dialog
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            //Set the Filter
-            saveFileDialog.Filter = "CSV File (*.csv)|*.csv";
-
-            //If the user has selected a path to save the file.
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                //Set the file path.
-                path = saveFileDialog.FileName;
-
-                //Try to write to the selected file.
-                WriteFile(path);
-            }
-        }
-
-        /// <summary>
         /// Called when the New->Classroom button is clicked.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NewClassroom_Btn_Click(object sender, EventArgs e)
+        private void File_New_Classroom_Click(object sender, EventArgs e)
         {
             //If a classroom hasnt already been loaded.
             if (classroom == null)
@@ -206,7 +95,7 @@ namespace ClassroomRobots
                 if (result == DialogResult.Yes)
                 {
                     //Save the file.
-                    SaveAs_Click(sender, e);
+                    File_SaveAs_Click(sender, e);
                 }
                 else if (result == DialogResult.No)
                 {
@@ -223,11 +112,159 @@ namespace ClassroomRobots
         }
 
         /// <summary>
+        /// Called when the File->New->Student button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void File_New_Student_Click(object sender, EventArgs e)
+        {
+            //Create a New Classrom form.
+            NewStudent newStudent = new NewStudent(this);
+
+            //Show the new form.
+            newStudent.Show();
+
+            //Hide the main form.
+            this.Hide();
+        }
+
+        /// <summary>
+        /// Called when the Open button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void File_Open_Click(object sender, EventArgs e)
+        {
+            //If a classroom hasnt already been loaded.
+            if (classroom == null)
+            {
+                //Open the classroom.
+                OpenClassroom();
+            }
+            //There is a classroom object.
+            else
+            {
+                //Whether the user wants to save the current classroom before making a new one.
+                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+                //If the result was yes.
+                if (result == DialogResult.Yes)
+                {
+                    //Save the file.
+                    File_SaveAs_Click(sender, e);
+                }
+                else if (result == DialogResult.No)
+                {
+                    //Set the classroom to null.
+                    classroom = null;
+
+                    //Recall the function
+                    File_Open_Click(sender, e);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when the Save button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void File_Save_Click(object sender, EventArgs e)
+        {
+            //If there is a path to save the file.
+            if (!String.IsNullOrEmpty(path))
+            {
+                //Try to write to the file.
+                WriteFile(path);
+            }
+            else
+            {
+                //Open the Save AS Dialog.
+                File_SaveAs_Click(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Called when the Save As button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void File_SaveAs_Click(object sender, EventArgs e)
+        {
+            //Create a Save Dialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            //Set the Filter
+            saveFileDialog.Filter = "CSV File (*.csv)|*.csv";
+
+            //If the user has selected a path to save the file.
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Set the file path.
+                path = saveFileDialog.FileName;
+
+                //Try to write to the selected file.
+                WriteFile(path);
+            }
+        }
+
+        /// <summary>
+        /// Called When the File->Exit button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void File_Exit_Click(object sender, EventArgs e)
+        {
+            //If a classroom hasnt already been loaded.
+            if (classroom == null)
+            {
+                //Close the form
+                this.Close();
+            }
+            //There is a classroom object.
+            else
+            {
+                //Whether the user wants to save the current classroom before making a new one.
+                DialogResult result = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+                //If the result was yes.
+                if (result == DialogResult.Yes)
+                {
+                    //Save the file.
+                    File_SaveAs_Click(sender, e);
+                }
+                else if (result == DialogResult.No)
+                {
+                    //Close the form
+                    this.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when the View > Students button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Veiw_Students_Click(object sender, EventArgs e)
+        {
+            //Create a New Classrom form.
+            ViewStudents viewStudents = new ViewStudents(this);
+
+            //Show the new form.
+            viewStudents.Show();
+
+            //Hide the main form.
+            this.Hide();
+        }
+
+        /// <summary>
         /// Load the classroom.
         /// </summary>
         /// <param name="classroom"></param>
         public void LoadClassroom()
         {
+            //Create the Classroom Table.
             CreateTable(classroom.size);
 
             //Set the menuitems to enabled.
@@ -323,26 +360,30 @@ namespace ClassroomRobots
             }
         }
 
-        // Keyboard Shortcuts
+        /// <summary>
+        /// KeyBoard Shortcuts.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Main_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             //Ctrl + O
             if (e.KeyCode == Keys.O && e.Modifiers == Keys.Control)
             {
                 //Show the Open Dialog.
-                Open_Click(sender, e);
+                File_Open_Click(sender, e);
             }
             //Ctrl + S
             else if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
             {
                 //Show the Save Dialog.
-                Save_Click(sender, e);
+                File_Save_Click(sender, e);
             }
             //Ctrl + Shift + S
             else if (e.KeyCode == Keys.S && e.Modifiers == (Keys.Control | Keys.Shift))
             {
                 //Show the Save Dialog.
-                SaveAs_Click(sender, e);
+                File_SaveAs_Click(sender, e);
             }
             else if (e.KeyCode == Keys.Space && ClassroomData.SelectedCells.Count == 1)
             {
@@ -368,20 +409,9 @@ namespace ClassroomRobots
             }
         }
 
-        //Called when the student button is clicked.
-        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Create a New Classrom form.
-            NewStudent newStudent = new NewStudent(this);
-
-            //Show the new form.
-            newStudent.Show();
-
-            //Hide the main form.
-            this.Hide();
-        }
-
-        //Opens a classrom file.
+        /// <summary>
+        /// Displays the Open File Dialog.
+        /// </summary>
         private void OpenClassroom()
         {
             //Create an Open Dialog
@@ -401,14 +431,22 @@ namespace ClassroomRobots
             }
         }
 
-        //Called when the value is changed.
+        /// <summary>
+        /// Called when the value is changed on the Classroom Size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Input_Size_ValueChanged(object sender, EventArgs e)
         {
             //Enable the Update Button.
             button_Update.Enabled = true;
         }
 
-        //Called when the Update button is clicked.
+        /// <summary>
+        /// Called when the Update button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Update_Click(object sender, EventArgs e)
         {
             //Set the new classroom size.
@@ -421,7 +459,11 @@ namespace ClassroomRobots
             button_Update.Enabled = false;
         }
 
-        //Called when the mouse is down on a cell.
+        /// <summary>
+        /// Called when the mouse is down on a cell.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClassroomData_Cell_Mouse_Down(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -474,7 +516,11 @@ namespace ClassroomRobots
             }
         }
 
-        //Called when a menuItem on the context menu is clicked.
+        /// <summary>
+        /// Called when a menuItem on the context menu is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ContextMenu_Click(object sender, EventArgs e)
         {
             //Get the Menu Item
@@ -499,7 +545,11 @@ namespace ClassroomRobots
             ClassroomData.CurrentCell = null;
         }
 
-        //Called when a menuItem on the context menu is clicked.
+        /// <summary>
+        /// Called when a menuItem on the context menu is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ContextMenu_AddStudent_Click(object sender, EventArgs e)
         {
             //Get the Menu Item.
@@ -522,7 +572,9 @@ namespace ClassroomRobots
             LoadClassroom();
         }
 
-        //Loads the students into the Student table.
+        /// <summary>
+        /// Loads the students into the Student table.
+        /// </summary>
         public void LoadStudents()
         {
             //Clear the Student table
@@ -548,23 +600,6 @@ namespace ClassroomRobots
 
             //Set the Student Table to enabled.
             StudentData.Enabled = true;
-        }
-
-        /// <summary>
-        /// Called when the View > Students button is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MenuItem_Veiw_Students_Click(object sender, EventArgs e)
-        {
-            //Create a New Classrom form.
-            ViewStudents viewStudents = new ViewStudents(this);
-
-            //Show the new form.
-            viewStudents.Show();
-
-            //Hide the main form.
-            this.Hide();
         }
 
         /// <summary>

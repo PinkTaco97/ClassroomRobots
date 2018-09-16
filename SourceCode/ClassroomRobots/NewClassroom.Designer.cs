@@ -167,7 +167,6 @@
             this.Name = "NewClassroom";
             this.Text = "New Classroom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewClassroom_Closing);
-            this.Load += new System.EventHandler(this.NewClassroom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Input_RoomSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

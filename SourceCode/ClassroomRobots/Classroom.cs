@@ -6,24 +6,39 @@ using System.Threading.Tasks;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// The Classroom Class.
+    /// </summary>
     public class Classroom
     {
-        //The name of the teacher.
+        /// <summary>
+        /// The name of the teacher.
+        /// </summary>
         public string teacher;
 
-        //The name of the class.
+        /// <summary>
+        /// The name of the class.
+        /// </summary>
         public string className;
 
-        //The room number.
+        /// <summary>
+        /// The room number.
+        /// </summary>
         public string roomNumber;
 
-        //A list of students in the class.
+        /// <summary>
+        /// A list of students in the class.
+        /// </summary>
         public List<Student> students;
 
-        //The layout of the classroom.
+        /// <summary>
+        /// The layout of the classroom.
+        /// </summary>
         public List<Desk> desks = new List<Desk>();
 
-        //The size of the classrooom
+        /// <summary>
+        /// The size of the classrooom
+        /// </summary>
         public int size = 5;
 
         /// <summary>

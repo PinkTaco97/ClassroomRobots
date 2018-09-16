@@ -11,9 +11,19 @@ namespace ClassroomRobots
     /// </summary>
     public class Student
     {
-        //The students name.
+        /// <summary>
+        /// The students name.
+        /// </summary>
         public string name;
+
+        /// <summary>
+        /// The students position on the x axis.
+        /// </summary>
         public int x;
+
+        /// <summary>
+        /// The students position on the y axis.
+        /// </summary>
         public int y;
 
         /// <summary>

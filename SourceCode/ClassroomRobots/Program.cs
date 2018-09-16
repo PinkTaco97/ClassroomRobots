@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// The Main Application.
+    /// </summary>
     static class Program
     {
         /// <summary>

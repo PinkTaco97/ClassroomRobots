@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace ClassroomRobots
 {
+    /// <summary>
+    /// The Binary Tree Class.
+    /// </summary>
     class Tree
     {
-        //The root of the tree
+        /// <summary>
+        /// The root of the tree.
+        /// </summary>
         public Node root = null;
 
-        //List of values that the tree holds.
+        /// <summary>
+        /// List of sorted values that the tree holds.
+        /// </summary>
         public List<Node> sorted = new List<Node>();
 
         /// <summary>
