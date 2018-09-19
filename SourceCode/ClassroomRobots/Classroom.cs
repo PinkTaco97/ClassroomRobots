@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author: Nathan Robertson
+ * Date: 05/09/2018
+ */
+
 namespace ClassroomRobots
 {
     /// <summary>

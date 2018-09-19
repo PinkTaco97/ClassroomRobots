@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+/*
+ * Author: Nathan Robertson
+ * Date: 05/09/2018
+ */
+
 namespace ClassroomRobots
 {
     /// <summary>
@@ -777,6 +782,64 @@ namespace ClassroomRobots
 
             //Update the .csv file.
             File.AppendAllText(@path, sb.ToString());
+        }
+
+        /// <summary>
+        /// Called when the RAF button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Raf_Button_Click(object sender, EventArgs e)
+        {
+            //The line number we need to see.
+            int number;
+            int currentLine = 0;
+
+            //If the user enterd a number.
+            if (int.TryParse(Input_RAF.Text, out number))
+            {
+                if (!string.IsNullOrEmpty(path))
+                {
+                    //Read the file.
+                    using (var reader = new StreamReader(@path))
+                    {
+                        //While there are still lines in the file.
+                        while (!reader.EndOfStream)
+                        {
+                            //Read the current line.
+                            var line = reader.ReadLine();
+
+                            //Add 1 to the current line.
+                            currentLine++;
+
+                            //Split the line into the seperate values.
+                            var values = line.Split(',');
+
+                            //If this is the line we want.
+                            if (currentLine == number)
+                            {
+                                //Show what the line contains.
+                                MessageBox.Show("Line " + number + ": " + line);
+                                Input_RAF.Text = "";
+                                
+                                return;
+                            }
+                        }
+                    }
+                    MessageBox.Show("There isnt " + number + " lines in the save file.");
+                    Input_RAF.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Please load a save file.");
+                    Input_RAF.Text = "";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input a number.");
+                Input_RAF.Text = "";
+            }
         }
     }
 }
